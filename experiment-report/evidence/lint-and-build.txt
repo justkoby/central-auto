@@ -1,0 +1,18 @@
+lint main:
+  [eyebrow] Eyebrow / kicker label above a heading.  (4×)
+  [emoji] Emoji used as UI.  (1×)
+  [gradient] Gradient fill. Use a flat colour or a real image (a neutral scrim over a photo is the one exception).  (2×)
+  [hairline] Thin rule / divider line. Separate with space, tone or scale; lines belong to real tables and form fields.  (2×)
+  [shadow] Shadow. Elements at rest carry none; only real overlays (menu, dialog, sticky bar) may.  (1×)
+  [numbering] Zero-padding in script. Fine for a clock, a date or a price; if it builds 01 / 02 / 03 labels, remove it.  (1×)
+  [outlined-box] A 1px outlined box. Prefer a filled surface or no box.  (3×)
+  [glass] Backdrop blur. One sticky bar at most; glass cards are a tell.  (1×)
+RESULT: 10 FAIL, 5 WARN — fix the FAILs before rendering.
+
+lint experiment:
+RESULT: 0 FAIL, 0 WARN
+
+build:
+dist/assets/index-Bm2hmSt7.css   25.31 kB │ gzip:  6.18 kB
+dist/assets/index-DGip81uy.js   264.86 kB │ gzip: 83.30 kB
+✓ built in 1.98s

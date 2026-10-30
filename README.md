@@ -16,13 +16,17 @@ npm run preview
 Deploy `dist/` to any static host. The Vite entry is root `index.html`.
 
 ## Structure
-- `src/App.jsx`: application state, navigation and supporting page sections
-- `src/components/Hero.jsx`: three manually controlled hero slides
-- `src/components/CarFinder.jsx`: linked make/model and budget/availability filters
-- `src/components/Inventory.jsx`: sorting, body filters, favourites and vehicle cards
-- `src/components/EnquiryDialog.jsx`: accessible vehicle and enquiry dialogs
-- `src/data/vehicles.js`: replaceable placeholder inventory
-- `src/styles.css`: responsive styles and reduced-motion support
+- `src/App.jsx`: application state, filters, saved cars and page composition
+- `src/components/Hero.jsx`: three-slide EV hero with the charge-level control (autoplay has a pause button and is off under reduced motion)
+- `src/components/EvDrawing.jsx`: teaser silhouettes used where no EV photograph exists
+- `src/components/ElectricFeature.jsx`, `ElectricGhana.jsx`: featured EV and the "going electric" guidance
+- `src/components/Categories.jsx`: conventional and commercial categories
+- `src/components/Inventory.jsx`, `CarFinder.jsx`: sticky-preview vehicle discovery, filters, sort, saved cars
+- `src/components/Services.jsx`, `EnquiryDialog.jsx`, `WhatsAppButton.jsx`: services and enquiry flows
+- `src/data/electric.js`: EV categories, guidance and services copy (no stock or prices)
+- `src/styles/tokens.css`, `src/styles/site.css`: design tokens and styles
+
+See `experiment-report/REPORT.md` for the design experiment (branch `experiment/four-design-skills`).
 
 ## Demo scope
 All stock, pricing, mileage and availability are illustrative. Unsplash inventory images may differ from named models. The Volkswagen hero photograph is temporarily taken from the user-supplied Swiss Group reference (`https://swissgroupauto.com/media/homepage/IDCROZZ.jpg`) for concept review; replace it with approved/licensed Central Auto photography before public launch. Brand names are text placeholders. No testimonials or performance statistics are invented.

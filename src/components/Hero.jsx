@@ -1,4 +1,87 @@
-import {useState} from 'react';
-import HeroSearch from './HeroSearch';
-const slides=[{tag:null,title:<>Ready for life.<br/>Ready for work.</>,description:'From the daily commute to a car for your next business move. Explore practical options, presented with the same care.',name:'Everyday & work collection',caption:'Corolla, Vitz and compact city cars. Tell us your budget, how you’ll use the car and what matters to you.',specs:[['Everyday','REAL-LIFE NEEDS'],['Your budget','YOUR STARTING POINT'],['More choice','YOUR NEXT MOVE']],image:'/assets/corolla-studio.png',alt:'Illustrative silver Toyota Corolla in a premium blue studio',type:'Everyday'},{tag:'A NEW KIND OF EVERYDAY',title:<>Electric.<br/>Extraordinary.</>,description:'More room for life. A fresh perspective on every journey. Discover the next chapter of electric driving.',name:'Volkswagen ID.6',caption:'Space to explore. Comfort to connect. Meet an SUV designed around the way you move.',specs:[['Electric','POWERTRAIN'],['7 seats','ROOM FOR EVERYONE'],['SUV','BODY STYLE']],image:'/assets/id6-hero-reference.jpg',alt:'Purple Volkswagen ID.6 electric SUV in a blue studio',type:'SUV'}, {tag:'FOR THE ROAD AHEAD',title:<>Make room<br/>for more.</>,description:'From weekday plans to weekends away. Explore SUVs with room for every part of your life.',name:'The SUV collection',caption:'Find your fit. Explore available vehicles by brand, budget and body style.',specs:[['Explore','THE COLLECTION'],['Compare','YOUR OPTIONS'],['Discover','YOUR NEXT MOVE']],image:'/assets/accra-suv.png',alt:'Illustrative silver SUV near Independence Square in Accra, Ghana',type:'SUV'}, {tag:'TAKE THE LONG WAY HOME',title:<>Every drive.<br/>An occasion.</>,description:'Discover distinctive cars for those who appreciate the journey as much as the destination.',name:'The coupe collection',caption:'Something out of the ordinary. Explore a different side of the Central Auto concept.',specs:[['Design','WITH PRESENCE'],['Coupe','BODY STYLE'],['Discover','THE COLLECTION']],image:'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85',alt:'Porsche sports car outdoors',type:'Coupe'}];
-export default function Hero({onSearch}){const [active,setActive]=useState(0);const slide=slides[active];return <section className="showcase" aria-label="Featured vehicles"><div className="showcase-media" key={slide.image}><img fetchPriority="high" src={slide.image} alt={slide.alt}/></div><div className="showcase-shade"/><div className="showcase-content">{slide.tag&&<div className="eyebrow"><i className="dot"/>{slide.tag}</div>}<HeroSearch onSearch={onSearch}/></div><div className="showcase-bottom"><div className="showcase-specs">{slide.specs.map(([value,label])=><div key={label}><strong>{value}</strong><small>{label}</small></div>)}</div><aside className="showcase-note"><span>IN FOCUS / {String(active+1).padStart(2,'0')}</span><h2>{slide.name}</h2><p>{slide.caption}</p></aside></div><div className="slide-controls"><span className="slide-count">{String(active+1).padStart(2,'0')} <span>/ {String(slides.length).padStart(2,'0')}</span></span><div className="slide-dots">{slides.map((s,i)=><button key={i} className={i===active?'current':''} aria-label={`Show ${s.name}`} aria-pressed={i===active} onClick={()=>setActive(i)}/>)}</div><button aria-label="Previous featured vehicle" onClick={()=>setActive((active+slides.length-1)%slides.length)}>←</button><button aria-label="Next featured vehicle" onClick={()=>setActive((active+1)%slides.length)}>→</button></div></section>}
+import { useEffect, useRef, useState } from 'react';
+import EvDrawing from './EvDrawing';
+import { evSlides } from '../data/electric';
+
+const SLIDE_MS = 8000;
+const palettes = {
+  city: { body: '#03211a', glass: '#07342a', edge: '#8fe3c4', ring: '#0f4a3b' },
+  crossover: { body: '#081748', glass: '#0e2670', edge: '#a9bcff', ring: '#1a3a9a' },
+};
+
+export default function Hero({ onEnquire }) {
+  const reduce = useRef(matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const [active, setActive] = useState(0);
+  const [playing, setPlaying] = useState(!reduce.current);
+  const [hover, setHover] = useState(false);
+  const running = playing && !hover;
+
+  useEffect(() => {
+    if (!running) return;
+    const t = setTimeout(() => setActive((a) => (a + 1) % evSlides.length), SLIDE_MS);
+    return () => clearTimeout(t);
+  }, [running, active]);
+
+  return (
+    <section
+      className="hero"
+      aria-roledescription="carousel"
+      aria-label="Electric vehicles at Central Auto"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onFocus={() => setHover(true)}
+      onBlur={() => setHover(false)}
+    >
+      <div className="hero-stage" aria-live={running ? 'off' : 'polite'}>
+        {evSlides.map((s, i) => {
+          const Title = i === active ? 'h1' : 'h2';
+          return (
+            <div
+              key={s.id}
+              className={`hero-slide field-${s.field} ${i === active ? 'is-active' : ''}`}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of ${evSlides.length}: ${s.label}`}
+              aria-hidden={i !== active}
+              inert={i !== active}
+            >
+              <div className="hero-art">
+                {s.image ? (
+                  <img src={s.image} alt={s.alt} width="2560" height="1440" fetchPriority={i === 0 ? 'high' : 'auto'} loading={i === 2 ? 'lazy' : 'eager'} decoding="async" />
+                ) : (
+                  <EvDrawing variant={s.art} {...palettes[s.art]} />
+                )}
+              </div>
+              <div className="hero-copy">
+                <Title>{s.title}</Title>
+                <p>{s.text}</p>
+                <div className="hero-actions">
+                  <button className="button button-accent" onClick={() => onEnquire(s.enquiry)}>{s.cta}</button>
+                  <a className="text-link" href="#inventory">Browse all vehicles</a>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="charge" role="group" aria-label="Choose an electric range">
+        {evSlides.map((s, i) => {
+          const state = i < active ? 'full' : i === active ? 'live' : 'empty';
+          return (
+            <button key={s.id} className={`charge-step is-${state} ${running && i === active ? 'is-running' : ''}`} aria-current={i === active} onClick={() => setActive(i)} style={{ '--slide-ms': `${SLIDE_MS}ms` }}>
+              <span className="charge-bar" aria-hidden="true"><span /></span>
+              <span className="charge-label">{s.label}</span>
+            </button>
+          );
+        })}
+        <button className="charge-toggle" onClick={() => setPlaying(!playing)} aria-label={playing ? 'Pause slideshow' : 'Play slideshow'} aria-pressed={!playing}>
+          {playing ? (
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" /></svg>
+          ) : (
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" /></svg>
+          )}
+        </button>
+      </div>
+    </section>
+  );
+}
