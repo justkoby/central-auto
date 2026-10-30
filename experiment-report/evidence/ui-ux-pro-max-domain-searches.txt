@@ -1,0 +1,233 @@
+################ [ux] carousel autoplay hero reduced motion
+## UI Pro Max Search Results
+**Domain:** ux | **Query:** carousel autoplay hero reduced motion
+**Source:** ux-guidelines.csv | **Found:** 3 results
+
+### Result 1
+- **Category:** Animation
+- **Issue:** Reduced Motion
+- **Platform:** All
+- **Description:** Respect user's motion preferences
+- **Do:** Check prefers-reduced-motion media query
+- **Don't:** Ignore accessibility motion settings
+- **Code Example Good:** @media (prefers-reduced-motion: reduce)
+- **Code Example Bad:** No motion query check
+- **Severity:** High
+
+### Result 2
+- **Category:** Animation
+- **Issue:** Excessive Motion
+- **Platform:** All
+- **Description:** Too many animations cause distraction and motion sickness
+- **Do:** Animate 1-2 key elements per view maximum
+- **Don't:** Animate everything that moves
+- **Code Example Good:** Single hero animation
+- **Code Example Bad:** animate-bounce on 5+ elements
+- **Severity:** High
+
+### Result 3
+- **Category:** Accessibility
+- **Issue:** Motion Sensitivity
+- **Platform:** All
+- **Description:** Parallax/Scroll-jacking causes nausea
+- **Do:** Honor prefers-reduced-motion and present the final readable state without parallax or scroll-jacking
+- **Don't:** Force scroll effects
+- **Code Example Good:** @media (prefers-reduced-motion)
+- **Code Example Bad:** ScrollTrigger.create()
+- **Severity:** High
+
+################ [product] electric vehicle energy automotive
+## UI Pro Max Search Results
+**Domain:** product | **Query:** electric vehicle energy automotive
+**Source:** products.csv | **Found:** 3 results
+
+### Result 1
+- **Product Type:** Automotive/Car Dealership
+- **Keywords:** automotive, car, dealership
+- **Primary Style Recommendation:** Motion-Driven + 3D & Hyperrealism
+- **Secondary Styles:** Dark Mode (OLED) , Glassmorphism
+- **Landing Page Pattern:** Hero-Centric Design + Feature-Rich
+- **Dashboard Style (if applicable):** Sales Intelligence Dashboard
+- **Color Palette Focus:** Brand colors + Metallic accents + Dark/Light
+
+### Result 2
+- **Product Type:** Sustainable Energy / Climate Tech
+- **Keywords:** climate, energy, sustainable, green, tech, carbon
+- **Primary Style Recommendation:** Organic Biophilic + E-Ink / Paper
+- **Secondary Styles:** Data-Dense Dashboard , Swiss Modernism 2.0
+- **Landing Page Pattern:** Interactive Demo + Data
+- **Dashboard Style (if applicable):** Energy/Utilities Dashboard
+- **Color Palette Focus:** Earth Green + Sky Blue + Solar Yellow
+
+### Result 3
+- **Product Type:** Smart Home/IoT Dashboard
+- **Keywords:** admin, analytics, dashboard, data, home, iot, panel, smart
+- **Primary Style Recommendation:** Glassmorphism + Dark Mode (OLED)
+- **Secondary Styles:** Minimalism & Swiss Style , AI-Native UI
+- **Landing Page Pattern:** Interactive Product Demo
+- **Dashboard Style (if applicable):** Real-Time Monitoring
+- **Color Palette Focus:** Dark + Status indicator colors
+
+################ [typography] premium automotive luxury editorial
+## UI Pro Max Search Results
+**Domain:** typography | **Query:** premium automotive luxury editorial
+**Source:** typography.csv | **Found:** 3 results
+
+### Result 1
+- **Font Pairing Name:** Classic Elegant
+- **Category:** Serif + Sans
+- **Heading Font:** Playfair Display
+- **Body Font:** Inter
+- **Mood/Style Keywords:** elegant, luxury, sophisticated, timeless, premium, editorial
+- **Best For:** Luxury brands, fashion, spa, beauty, editorial, magazines, high-end e-commerce
+- **Google Fonts URL:** https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap
+- **CSS Import:** @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+- **Tailwind Config:** fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Inter', 'sans-serif'] }
+- **Notes:** High contrast between elegant heading and clean body. Perfect for luxury/premium.
+
+### Result 2
+- **Font Pairing Name:** Luxury Minimalist
+- **Category:** Serif + Sans
+- **Heading Font:** Bodoni Moda
+- **Body Font:** Jost
+- **Mood/Style Keywords:** luxury, minimalist, high-end, sophisticated, refined, premium
+- **Best For:** Luxury minimalist brands, high-end fashion, premium products
+- **Google Fonts URL:** https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&display=swap
+- **CSS Import:** @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&display=swap');
+- **Tailwind Config:** fontFamily: { serif: ['Bodoni Moda', 'serif'], sans: ['Jost', 'sans-serif'] }
+- **Notes:** Bodoni's high contrast elegance. Jost for geometric body.
+
+### Result 3
+- **Font Pairing Name:** Luxury Serif
+- **Category:** Serif + Sans
+- **Heading Font:** Cormorant
+- **Body Font:** Montserrat
+- **Mood/Style Keywords:** luxury, high-end, fashion, elegant, refined, premium
+- **Best For:** Fashion brands, luxury e-commerce, jewelry, high-end services
+- **Google Fonts URL:** https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap
+- **CSS Import:** @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+- **Tailwind Config:** fontFamily: { serif: ['Cormorant', 'serif'], sans: ['Montserrat', 'sans-serif'] }
+- **Notes:** Cormorant's elegance with Montserrat's geometric precision.
+
+################ [ux] touch target mobile navigation drawer
+## UI Pro Max Search Results
+**Domain:** ux | **Query:** touch target mobile navigation drawer
+**Source:** ux-guidelines.csv | **Found:** 3 results
+
+### Result 1
+- **Category:** Touch
+- **Issue:** Touch Target Size
+- **Platform:** Mobile
+- **Description:** Touch target guidance depends on platform and web context
+- **Do:** Use 44pt on iOS and 48dp on Android; for web use the separate WCAG Target Size rule
+- **Don't:** Treat one unit or minimum as universal across platforms
+- **Code Example Good:** iOS 44pt; Android 48dp; Web 24 CSS px plus WCAG exceptions
+- **Code Example Bad:** w-6 h-6 buttons
+- **Severity:** High
+
+### Result 2
+- **Category:** Touch
+- **Issue:** Touch Spacing
+- **Platform:** Mobile
+- **Description:** Adjacent touch targets need adequate spacing
+- **Do:** Minimum 8px gap between touch targets
+- **Don't:** Tightly packed clickable elements
+- **Code Example Good:** gap-2 between buttons
+- **Code Example Bad:** gap-0 or gap-1
+- **Severity:** Medium
+
+### Result 3
+- **Category:** Responsive
+- **Issue:** Touch Friendly
+- **Platform:** Web
+- **Description:** Mobile layouts need touch-sized targets
+- **Do:** Increase touch targets on mobile
+- **Don't:** Same tiny buttons on mobile
+- **Code Example Good:** Larger buttons on mobile
+- **Code Example Bad:** Desktop-sized targets on mobile
+- **Severity:** High
+
+################ [ux] image lazy load layout shift
+## UI Pro Max Search Results
+**Domain:** ux | **Query:** image lazy load layout shift
+**Source:** ux-guidelines.csv | **Found:** 3 results
+
+### Result 1
+- **Category:** Typography
+- **Issue:** Font Loading
+- **Platform:** Web
+- **Description:** Fonts should load without layout shift
+- **Do:** Reserve space with fallback font
+- **Don't:** Layout shift when fonts load
+- **Code Example Good:** font-display: swap + similar fallback
+- **Code Example Bad:** No fallback font
+- **Severity:** Medium
+
+### Result 2
+- **Category:** Performance
+- **Issue:** Lazy Loading
+- **Platform:** All
+- **Description:** Load content as needed
+- **Do:** Lazy load below-fold images and content
+- **Don't:** Load everything upfront
+- **Code Example Good:** loading='lazy'
+- **Code Example Bad:** All images eager load
+- **Severity:** Medium
+
+### Result 3
+- **Category:** Performance
+- **Issue:** Image Optimization
+- **Platform:** All
+- **Description:** Large images slow page load
+- **Do:** Use appropriate size and format (WebP)
+- **Don't:** Unoptimized full-size images
+- **Code Example Good:** srcset with multiple sizes
+- **Code Example Bad:** 4000px image for 400px display
+- **Severity:** High
+
+################ [color] automotive electric sustainable
+## UI Pro Max Search Results
+**Domain:** color | **Query:** automotive electric sustainable
+**Source:** colors.csv | **Found:** 3 results
+
+### Result 1
+- **Product Type:** Automotive/Car Dealership
+- **Primary:** #1E293B
+- **On Primary:** #FFFFFF
+- **Secondary:** #334155
+- **On Secondary:** #FFFFFF
+- **Accent:** #DC2626
+- **On Accent:** #FFFFFF
+- **Background:** #F8FAFC
+- **Foreground:** #0F172A
+- **Card:** #FFFFFF
+- **Card Foreground:** #0F172A
+- **Muted:** #E9EDF1
+- **Muted Foreground:** #475569
+- **Border:** #E2E8F0
+- **Destructive:** #DC2626
+- **On Destructive:** #FFFFFF
+- **Ring:** #1E293B
+- **Notes:** Premium dark + action red
+
+### Result 2
+- **Product Type:** EV/Charging Ecosystem
+- **Primary:** #0891B2
+- **On Primary:** #000000
+- **Secondary:** #22D3EE
+- **On Secondary:** #0F172A
+- **Accent:** #16A34A
+- **On Accent:** #000000
+- **Background:** #ECFEFF
+- **Foreground:** #164E63
+- **Card:** #FFFFFF
+- **Card Foreground:** #164E63
+- **Muted:** #E8F1F6
+- **Muted Foreground:** #475569
+- **Border:** #A5F3FC
+- **Destructive:** #DC2626
+- **On Destructive:** #FFFFFF
+- **Ring:** #0891B2
+- **Notes:** Electric cyan + eco green [Accent adjusted from #22C55E]
+
+### Result 3

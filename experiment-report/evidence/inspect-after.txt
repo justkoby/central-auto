@@ -1,0 +1,15 @@
+MEASURED (first viewport listed)
+  hero headline   "ELECTRIC FOR EVERY DAY."  4 words · 2 line(s) · 80px (5.6vw) · Imbue 400 · tracking -0.01em · leading 0.92
+  @768px          1 line(s) · 56.2px
+  @390px          1 line(s) · 40px
+  typefaces       Albert Sans 91%, Imbue 9%
+  sizes in use    15 / 19 / 26 / 35 / 36 / 56 / 60 / 80 / 132 px   body 19px / 1.55
+  colour          page #0b1120 · sections #070b16 #1b3fa0 #1a37a0 #111a30 #003428 · button #111a30
+  page            11.4 screens · 756 words · 13 images · hero media 32% svg
+  headings        19 · longest 2 line(s) · median 3 words
+
+WARN — fix, or be able to defend
+  [no-footage] @1440px  No video anywhere on the page.
+      → Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject.
+
+LOOK AT THE RENDER — open these with your image viewer / Read tool before saying anything about quality:

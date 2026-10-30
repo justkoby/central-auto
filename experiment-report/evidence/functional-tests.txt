@@ -1,0 +1,48 @@
+PASS | one h1 | YOUR FIRST ELECTRIC CAR.
+PASS | hero slide 2 active | 
+PASS | inactive slides inert/hidden | 
+PASS | enquiry dialog opens from hero | EVERYDAY ELECTRIC VEHICLES
+PASS | enquiry message prepared with service + details | 
+PASS | no WhatsApp number set -> copy fallback | 
+PASS | dialog closes on Escape | 
+PASS | search shows summary | 
+PASS | search filters to Corolla | ["Toyota\nCorolla LE"]
+PASS | clear search restores list | 
+PASS | SUV tab filters | 3
+PASS | make+budget filters | ["Toyota\nCorolla LE","Toyota\nVitz"]
+PASS | reset restores all + selects | 
+PASS | sort high-to-low | 
+PASS | hover row updates preview | 
+PASS | vehicle detail dialog | 
+PASS | detail -> enquiry stage | 
+PASS | save increments header count | 
+PASS | saved persists after reload | 
+PASS | saved-only shows 1 | 
+PASS | category panel sets SUV tab | 
+PASS | commercial panel opens enquiry | 
+PASS | service enquiry opens | 
+PASS | email enquiry channel | 
+PASS | WhatsApp panel opens | 
+PASS | anchor #electric | 
+PASS | anchor #ev-ghana | 
+PASS | anchor #inventory | 
+PASS | anchor #services | 
+PASS | anchor #source | 
+PASS | anchor #approach | 
+PASS | no console/page errors | 
+PASS | mobile: nav links hidden when closed | 
+PASS | mobile: menu opens | 
+PASS | mobile: Escape closes menu | 
+PASS | mobile: nav link scrolls + closes | 
+PASS | no horizontal scroll @320 | 
+PASS | no horizontal scroll @375 | 
+PASS | no horizontal scroll @390 | 
+PASS | no horizontal scroll @768 | 
+PASS | no horizontal scroll @1024 | 
+PASS | no horizontal scroll @1280 | 
+PASS | no horizontal scroll @1440 | 
+PASS | no horizontal scroll @1920 | 
+PASS | reduced motion: no hidden reveal elements | 
+PASS | reduced motion: slideshow starts paused | 
+
+46/46 passed

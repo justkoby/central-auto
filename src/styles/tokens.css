@@ -1,0 +1,50 @@
+/* Design tokens: primitive -> semantic -> a few component tokens.
+   Components reference semantic tokens only. Dark-only: the page is one dark room. */
+:root {
+  /* primitive */
+  --navy-950: #070b16;
+  --navy-900: #0b1120;
+  --navy-800: #111a30;
+  --navy-700: #1a2744;
+  --cobalt-700: #16327f;
+  --cobalt-800: #0f2360;
+  --green-900: #003428;
+  --green-800: #0a4636;
+  --green-950: #021f18;
+  --orange-500: #ed6739;
+  --orange-600: #d95b30;
+  --ink-50: #eef0f4;
+  --ink-300: #b9c0cf;
+  --ink-500: #7d88a0;
+
+  /* semantic */
+  --bg: var(--navy-900);
+  --bg-deep: var(--navy-950);
+  --surface: var(--navy-800);
+  --surface-raised: var(--navy-700);
+  --brand: var(--green-900);
+  --ink: var(--ink-50);
+  --muted: var(--ink-300);
+  --accent: var(--orange-500);
+  --accent-hover: var(--orange-600);
+  --on-accent: #1a0d07;
+  --focus: #ffffff;
+
+  /* type */
+  --font-display: 'Imbue', 'Times New Roman', serif;
+  --font-text: 'Albert Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2.5rem, 1.4rem + 4.4vw, 5rem);
+  --step-display: clamp(3.25rem, 1.6rem + 7.4vw, 9rem);
+
+  /* layout and motion (component-level) */
+  --gutter: clamp(20px, 4vw, 56px);
+  --section-gap: clamp(88px, 12vw, 200px);
+  --nav-h: 72px;
+  --radius-button: 999px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 160ms;
+  --dur-base: 500ms;
+}

@@ -1,0 +1,29 @@
+  hero headline   "Tell us what you need."  5 words · 2 line(s) · 72px (5vw) · Manrope 600 · tracking -0.042em · leading 1.06
+  typefaces       DM Sans 85%, Manrope 15%
+  sizes in use    7 / 8 / 9 / 10 / 11 / 12 / 13 / 16 / 17 / 18 / 20 / 21 / 23 / 24 / 25 / 35 / 48 / 52 / 60 / 72 px   body 13px / 1.8
+  page            7.8 screens · 875 words · 22 images · hero media 88% img
+  headings        14 · longest 3 line(s) · median 6 words
+  [headline-lines] @1440px  1 headline(s) wrap past two lines at 1440px: "Can’t find what you need? Tell us. We’ll look in" → 3 lines (11 words, 52px)
+  [eyebrow] @1440px (+768, 390)  10 eyebrow/kicker label(s) above headings: "THE COLLECTION" above "Your next chapter. Your next car."; "CENTRAL AUTO SERVICES" above "More than the vehicle. Support for the w"; "PASSENGER VEHICLES"
+  [numbering] @1440px (+768, 390)  Decorative index numbers: "01", "/ 04", "01 / DISCOVER", "02 / CONNECT", "03 / PLAN"
+  [micro-label] @1440px (+768, 390)  45 tiny uppercase letter-spaced labels (e.g. "CENTRAL AUTO LTD VEHICLES · EQUIPMENT · ", "REAL-LIFE NEEDS", "YOUR STARTING POINT", "YOUR NEXT MOVE").
+  [emoji] @1440px (+768, 390)  Emoji in the page: ♡
+  [gradient] @1440px (+768, 390)  2 gradient fill(s): div.showcase-shade → linear-gradient(90deg, rgba(7, 12, 28, 0.9) 0%, rgba(10, 18, 43, 0.55) 28%, rgba(0, 0, 0, 0) 65%), linear-grad | section.search-dock → linear-gradient(
+  [shadow] @1440px (+768, 390)  2 box-shadow(s) on elements at rest: form.natural-search → rgba(255, 255, 255, 0.094) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.063) 0px 8px 2 | form.finder.finder-new → rgba(16, 20, 35, 0.03) 0px 
+  [hairline] @1440px (+768, 390)  15 thin rule(s)/divider line(s): nav.dark-nav.site-nav 1440px | div.specs 369px | div.specs 369px | div.specs 369px
+  [outlined-box] @1440px (+768, 390)  11 boxes drawn with a 1px outline.
+  [palette-claude] @1440px (+768, 390)  Cream + terracotta palette (page background #f6f5f1, button #ed6739).
+  [body-size] @1440px (+768, 390)  Body text is 13px (the size most of the running text is set in).
+  [small-text] @1440px (+768, 390)  77 text blocks under 13px.
+  [broken-image] @1440px (+768, 390)  Broken image(s): https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=80, https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=
+  [headline-lines] @768px  4 headline(s) wrap past two lines at 768px: "More than the vehicle. Support for the whole jou" → 3 lines (9 words, 32px); "Not on the site? We’ll help you look." → 3 lines (8 words, 27px); "Can’t
+  [headline-lines] @390px  2 headline(s) wrap past two lines at 390px: "More than the vehicle. Support for the whole jou" → 3 lines (9 words, 34px); "Can’t find what you need? Tell us. We’ll look in" → 4 lines (11 words, 3
+  [glass] @1440px (+768, 390)  6 backdrop-blur surfaces.
+  [card-rows] @1440px (+768, 390)  4 rows of identical boxed cards.
+  [contrast] @1440px (+768, 390)  Low-contrast text: "Explore vehicles" 3.2:1 needs 4.5:1; "Discuss your requirements" 3.2:1 needs 4.5:1; "Ask about servicing" 3.2:1 needs 4.5:1; "Enquire about a part" 3.2:1 needs 4.5:1
+  [size-count] @1440px (+768, 390)  20 different font sizes (7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 20, 21, 23, 24, 25, 35, 48, 52, 60, 72).
+  [no-footage] @1440px  No video anywhere on the page.
+  [font-not-dealt] @1440px  The sheet dealt Imbue and Albert Sans, but the page renders DM Sans, Manrope.
+  [still-page] @1440px  Little motion: 14 element(s) moved while the page loaded and scrolled.
+  [mixed-font-headline] @390px  3 headline(s) switch typeface or to italic mid-line (the "one italic serif word" move).
+RESULT: 15 FAIL, 8 WARN — not done.

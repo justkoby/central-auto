@@ -16,3 +16,7 @@ Generated concept images for Apple-inspired services tiles, using a light cool-g
 - `service-parts.png`: brake disc, pads, filters, spark plugs and belt.
 - `service-assembly.png`: vehicle chassis and engine components.
 These are illustrative service visuals, not photographs of Central Auto facilities or staff.
+
+## EV hero (design experiment)
+- `id6-hero-reference.jpg` is the only electric-vehicle photograph in the project. It is a user-supplied reference image and must be replaced with approved, licensed photography before launch.
+- The Affordable and Everyday hero slides are drawn teaser silhouettes (`src/components/EvDrawing.jsx`), not photographs. Replace them with licensed EV photography by adding an `image` and `alt` to the slide in `src/data/electric.js`.
