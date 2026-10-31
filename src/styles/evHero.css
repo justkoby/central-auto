@@ -1,0 +1,858 @@
+/* ==========================================================================
+   CENTRAL AUTO LTD — PREMIUM CONTINUOUS EV SHOWCASE
+   Studio Lighting • Continuous Horizon • Manrope & Inter Typography
+   ========================================================================== */
+
+:root {
+  --ev-bg: #f4f5f3;
+  --ev-bg-alt: #ebece8;
+  --ev-ink: #0d121c;
+  --ev-ink-muted: #475467;
+  --ev-ink-faint: #64748b;
+  --ev-accent: #ed6739;
+  --ev-accent-hover: #d95527;
+  --ev-slot-w: clamp(640px, 52vw, 860px);
+  --ev-slot-gap: clamp(40px, 6vw, 90px);
+  --ribbon-pos: 1;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --ev-slot-w: clamp(520px, 65vw, 700px);
+    --ev-slot-gap: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --ev-slot-w: 84vw;
+    --ev-slot-gap: 20px;
+  }
+}
+
+/* ---------- Main Showcase Stage ---------- */
+.ev-hero-showcase {
+  position: relative;
+  height: 100svh;
+  min-height: 640px;
+  max-height: 980px;
+  background-color: var(--ev-bg);
+  overflow: hidden;
+  user-select: none;
+  touch-action: pan-y;
+  cursor: grab;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--ev-ink);
+}
+
+.ev-hero-showcase:active {
+  cursor: grabbing;
+}
+
+/* Ambient Studio Light & Horizon Floor */
+.ev-hero-ambient-studio {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ev-hero-radial-keylight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 92% 65% at 50% 22%,
+    #ffffff 0%,
+    var(--ev-bg) 62%,
+    var(--ev-bg-alt) 100%
+  );
+}
+
+.ev-hero-horizon-floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32%;
+  background: linear-gradient(
+    to bottom,
+    rgba(235, 237, 235, 0.35) 0%,
+    rgba(215, 218, 215, 0.8) 100%
+  );
+  border-top: 1px solid rgba(0, 0, 0, 0.035);
+}
+
+/* ---------- Top Left: Headline & Proposition ---------- */
+.ev-hero-header-area {
+  position: absolute;
+  top: clamp(86px, 14vh, 126px);
+  left: var(--gutter);
+  z-index: 10;
+  max-width: min(440px, 38vw);
+  pointer-events: none;
+}
+
+.ev-hero-category-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.ev-hero-badge-pill {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--ev-accent);
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(237, 103, 57, 0.28);
+}
+
+.ev-hero-badge-sub {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ev-ink-faint);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ev-hero-headline {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(2.2rem, 3.6vw, 3.6rem);
+  font-weight: 800;
+  color: var(--ev-ink);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin: 8px 0 10px 0;
+  text-transform: none;
+}
+
+.ev-hero-subline {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.15vw, 1.25rem);
+  color: var(--ev-ink-muted);
+  line-height: 1.45;
+  margin: 0;
+  max-width: 36ch;
+}
+
+/* ---------- Top Right: Compact Vehicle Info Panel ---------- */
+.ev-hero-info-panel {
+  position: absolute;
+  top: clamp(86px, 14vh, 126px);
+  right: var(--gutter);
+  z-index: 10;
+  width: min(330px, 28vw);
+  pointer-events: auto;
+}
+
+.ev-hero-panel-inner {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 18px;
+  padding: 20px 22px;
+  border: 1px solid rgba(0, 0, 0, 0.065);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+}
+
+.ev-hero-brand-name {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ev-accent);
+}
+
+.ev-hero-model-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ev-ink);
+  margin: 3px 0 2px 0;
+  letter-spacing: -0.02em;
+}
+
+.ev-hero-powertrain {
+  font-size: 0.8rem;
+  color: var(--ev-ink-faint);
+  line-height: 1.35;
+  margin: 0 0 12px 0;
+}
+
+.ev-hero-quick-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 10px 0;
+  margin-bottom: 14px;
+}
+
+.ev-hero-spec-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ev-hero-spec-label {
+  font-size: 0.74rem;
+  color: var(--ev-ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.ev-hero-spec-val {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.9rem;
+  color: var(--ev-ink);
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.ev-hero-spec-note {
+  font-size: 0.68rem;
+  color: #94a3b8;
+}
+
+.ev-hero-panel-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ev-hero-btn-mobile {
+  display: none;
+}
+.ev-hero-btn-desktop {
+  display: inline;
+}
+
+.ev-hero-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--ev-ink);
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(13, 18, 28, 0.15);
+}
+
+.ev-hero-cta-btn:hover {
+  background: var(--ev-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(237, 103, 57, 0.28);
+}
+
+.ev-hero-arrow-icon {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ev-hero-cta-btn:hover .ev-hero-arrow-icon {
+  transform: translateX(4px);
+}
+
+.ev-hero-specs-toggle {
+  background: none;
+  border: none;
+  color: var(--ev-ink-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 3px;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+
+.ev-hero-specs-toggle:hover {
+  color: var(--ev-accent);
+}
+
+.ev-hero-disclaimer {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  margin: 10px 0 0 0;
+  line-height: 1.35;
+}
+
+/* ---------- Continuous Horizontal Vehicle Track ---------- */
+.ev-hero-track-viewport {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.ev-hero-continuous-track {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  pointer-events: auto;
+  will-change: transform;
+  transform: translate3d(
+    calc(50vw - (var(--ev-slot-w) / 2) - var(--ribbon-pos) * (var(--ev-slot-w) + var(--ev-slot-gap))),
+    0,
+    0
+  );
+}
+
+.ev-hero-car-slot {
+  position: relative;
+  flex: 0 0 var(--ev-slot-w);
+  margin-right: var(--ev-slot-gap);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Giant Architectural Typography Watermark Number */
+.ev-hero-watermark-number {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(220px, 32vw, 480px);
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.038);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+  letter-spacing: -0.06em;
+  user-select: none;
+}
+
+/* Vehicle Cutout & Ground Shadow Baseline */
+.ev-hero-car-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: clamp(28px, 6vh, 72px);
+}
+
+.ev-hero-vehicle-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.08));
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+.ev-hero-car-slot:not(.is-active) .ev-hero-vehicle-img {
+  transform: scale(0.92);
+  opacity: 0.65;
+}
+
+.ev-hero-car-slot.is-active .ev-hero-vehicle-img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ---------- Bottom Category Navigation & Timeline Bar ---------- */
+.ev-hero-bottom-bar {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(24px, 4.5vh, 44px);
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  pointer-events: auto;
+}
+
+.ev-hero-category-nav {
+  display: flex;
+  gap: clamp(8px, 1.2vw, 14px);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ev-hero-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--ev-ink-muted);
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ev-hero-nav-pill:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--ev-ink);
+}
+
+.ev-hero-nav-pill.is-active {
+  background: var(--ev-ink);
+  color: #ffffff;
+  border-color: var(--ev-ink);
+  box-shadow: 0 4px 14px rgba(13, 18, 28, 0.14);
+}
+
+.ev-hero-pill-num {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  font-weight: 800;
+}
+
+.ev-hero-pill-label {
+  font-weight: 700;
+}
+
+.ev-hero-pill-model {
+  font-weight: 500;
+  opacity: 0.8;
+  font-size: 0.8rem;
+}
+
+.ev-hero-timeline-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ev-hero-progress-track {
+  width: clamp(80px, 10vw, 160px);
+  height: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ev-hero-progress-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--ev-ink);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.ev-hero-nav-arrows {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ev-hero-arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: grid;
+  place-items: center;
+  color: var(--ev-ink);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ev-hero-arrow-btn:hover {
+  background: var(--ev-ink);
+  color: #ffffff;
+}
+
+.ev-hero-counter {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ev-ink-faint);
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Floating Drag Prompt Indicator */
+.ev-hero-drag-hint {
+  position: absolute;
+  bottom: clamp(74px, 11vh, 96px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  color: var(--ev-ink-faint);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  pointer-events: none;
+  opacity: 0.75;
+  transition: opacity 0.3s;
+}
+
+.ev-hero-drag-hint.is-active {
+  opacity: 0;
+}
+
+/* ---------- Full Verified Specifications Modal Sheet ---------- */
+.ev-hero-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(13, 18, 28, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  animation: evModalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ev-hero-modal-dialog {
+  background: #ffffff;
+  border-radius: 24px;
+  width: min(600px, 94vw);
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 72px rgba(0, 0, 0, 0.24);
+  padding: clamp(24px, 4vw, 36px);
+  animation: evModalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes evModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes evModalSlideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ev-hero-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+}
+
+.ev-hero-modal-cat {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ev-accent);
+}
+
+.ev-hero-modal-header h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--ev-ink);
+  margin: 4px 0 2px 0;
+}
+
+.ev-hero-modal-price {
+  font-size: 0.95rem;
+  color: var(--ev-ink-faint);
+  font-weight: 600;
+  margin: 0;
+}
+
+.ev-hero-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--ev-ink-faint);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ev-hero-modal-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--ev-ink);
+}
+
+.ev-hero-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.ev-hero-modal-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ev-hero-modal-card .label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--ev-ink-faint);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.ev-hero-modal-card .val {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ev-ink);
+}
+
+.ev-hero-modal-card .note {
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+
+.ev-hero-highlights-box {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.ev-hero-highlights-box h4 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: var(--ev-ink);
+}
+
+.ev-hero-highlights-box ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: var(--ev-ink-muted);
+}
+
+.ev-hero-modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 20px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN RULES: 360px, 390px, 768px, 1024px, 1440px
+   ========================================================================== */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .ev-hero-header-area {
+    max-width: 48vw;
+  }
+  .ev-hero-info-panel {
+    width: min(300px, 34vw);
+    padding: 16px 18px;
+  }
+  .ev-hero-headline {
+    font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  }
+}
+
+/* Mobile & Small Tablets (768px and below) */
+@media (max-width: 768px) {
+  .ev-hero-showcase {
+    min-height: 600px;
+  }
+
+  .ev-hero-header-area {
+    position: relative;
+    top: auto;
+    left: auto;
+    padding: clamp(74px, 11vh, 88px) var(--gutter) 0;
+    max-width: 100%;
+    text-align: left;
+    pointer-events: auto;
+  }
+
+  .ev-hero-headline {
+    font-size: clamp(1.75rem, 6.5vw, 2.2rem);
+    margin: 6px 0 6px 0;
+  }
+
+  .ev-hero-subline {
+    font-size: 0.92rem;
+    max-width: 100%;
+  }
+
+  .ev-hero-car-wrapper {
+    padding-top: 0;
+  }
+
+  .ev-hero-vehicle-img {
+    max-width: 86vw;
+  }
+
+  /* Compact info bar directly above category pills */
+  .ev-hero-info-panel {
+    position: absolute;
+    top: auto;
+    bottom: 112px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: none;
+    box-sizing: border-box;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    z-index: 12;
+  }
+
+  .ev-hero-panel-inner {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 14px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+
+  .ev-hero-panel-head {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .ev-hero-brand-name {
+    font-size: 0.68rem;
+    display: block;
+    line-height: 1.1;
+  }
+
+  .ev-hero-model-title {
+    font-size: 0.94rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 2px 0 0 0;
+  }
+
+  .ev-hero-powertrain,
+  .ev-hero-quick-specs,
+  .ev-hero-disclaimer,
+  .ev-hero-specs-toggle {
+    display: none;
+  }
+
+  .ev-hero-panel-actions {
+    flex: 0 0 auto;
+  }
+
+  .ev-hero-btn-desktop {
+    display: none !important;
+  }
+
+  .ev-hero-btn-mobile {
+    display: inline !important;
+  }
+
+  .ev-hero-cta-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .ev-hero-bottom-bar {
+    bottom: 14px;
+    gap: 8px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ev-hero-category-nav {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .ev-hero-nav-pill {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+  }
+
+  .ev-hero-pill-model {
+    display: none;
+  }
+
+  .ev-hero-timeline-controls {
+    justify-content: space-between;
+  }
+
+  .ev-hero-drag-hint {
+    display: none;
+  }
+}
+
+/* Small Mobile (360px – 390px) */
+@media (max-width: 400px) {
+  .ev-hero-headline {
+    font-size: 1.55rem;
+  }
+  .ev-hero-nav-pill {
+    padding: 5px 9px;
+    font-size: 0.72rem;
+  }
+  .ev-hero-info-panel {
+    bottom: 90px;
+  }
+}

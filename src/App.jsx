@@ -86,7 +86,7 @@ export default function App() {
       <a className="skip-link" href="#main">Skip to content</a>
       <Header savedCount={saved.length} savedOnly={savedOnly} onSaved={() => { setSavedOnly(true); scrollToInventory(); }} onContact={() => enquire('General enquiries')} />
       <main id="main">
-        <Hero onEnquire={enquire} />
+        <Hero onEnquire={enquire} onDetail={(vehicle) => setView({ kind: 'vehicle', vehicle })} />
         <HeroSearch onSearch={search} />
         <ElectricFeature onEnquire={enquire} />
         <ElectricGhana onEnquire={enquire} />
