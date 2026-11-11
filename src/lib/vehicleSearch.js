@@ -1,8 +1,8 @@
 // Local, deterministic query interpretation. No API calls or external model dependency.
 const aliases={
- make:{Toyota:['toyota','toyata'],Chevrolet:['chevrolet','chevy','daewoo'],'Mercedes-Benz':['mercedes benz','mercedes','benz'],BMW:['bmw'],'Land Rover':['land rover','range rover'],Porsche:['porsche'],Kia:['kia'],Hyundai:['hyundai'],Honda:['honda'],Nissan:['nissan'],Volkswagen:['volkswagen','vw'],Ford:['ford']},
- model:{'Corolla':['corolla','corola'],'Vitz':['vitz','yaris'],'Matiz':['matiz'],'Prado':['prado'],'Land Cruiser':['land cruiser'],'Camry':['camry'],'GLE':['gle'],'530i':['530i'],'Range Rover Sport':['range rover sport'],'911':['911','carrera'],'Picanto':['picanto'],'Elantra':['elantra'],'Civic':['civic'],'Sentra':['sentra']},
- type:{SUV:['suv','sport utility'],Sedan:['sedan','saloon'],Hatchback:['hatchback','hatch back'],Truck:['truck','lorry','pickup','pick up'],Equipment:['excavator','equipment','machinery']},
+ make:{Toyota:['toyota','toyata'],Chevrolet:['chevrolet','chevy','daewoo'],'Mercedes-Benz':['mercedes benz','mercedes','benz'],BMW:['bmw'],'Land Rover':['land rover','range rover'],Porsche:['porsche'],Dongfeng:['dongfeng'],BYD:['byd'],XPeng:['xpeng','xpeng'],Kia:['kia'],Hyundai:['hyundai'],Honda:['honda'],Nissan:['nissan'],Volkswagen:['volkswagen','vw'],Ford:['ford']},
+ model:{'Corolla':['corolla','corola'],'Vitz':['vitz','yaris'],'Matiz':['matiz'],'Prado':['prado'],'Land Cruiser':['land cruiser'],'Camry':['camry'],'GLE':['gle'],'530i':['530i'],'Range Rover Sport':['range rover sport'],'911':['911','carrera'],'Nammi':['nammi'],'Atto':['atto','yuan up','yuanup'],'G9':['g9'],'Picanto':['picanto'],'Elantra':['elantra'],'Civic':['civic'],'Sentra':['sentra']},
+ type:{SUV:['suv','sport utility','family suv','crossover'],Sedan:['sedan','saloon'],Hatchback:['hatchback','hatch back'],Truck:['truck','lorry','pickup','pick up','pick-up','business pickup'],Equipment:['excavator','equipment','machinery']},
  fuel:{Diesel:['diesel'],Petrol:['petrol','gasoline'],Electric:['electric','ev'],Hybrid:['hybrid']},
  transmission:{Automatic:['automatic','auto'],Manual:['manual']}
 };
@@ -32,6 +32,8 @@ export function interpretVehicleQuery(raw){
  if(/\b(uber|bolt|ride hailing|ride-hailing|taxi)\b/.test(text)){filters.collection='Ride-hailing';labels.push('Ride-hailing options');notes.push('Platform eligibility needs checking for the actual vehicle.');}
  else if(/\b(everyday|commut\w*|work|small car|city car|affordable|budget car|cheap|maintenance|spare parts)\b/.test(text)){filters.collection='Everyday';labels.push('Everyday & work');}
  if(/\b(premium|luxury)\b/.test(text)){filters.collection='Premium';labels.push('Premium');}
+ if(/\bfamily\b/.test(text)&&!filters.type){filters.type='SUV';labels.push('SUV');}
+ if(/\b(business|commercial)\b/.test(text)&&/\b(pickup|pick[- ]?up|truck|lorry)\b/.test(text)){filters.type='Truck';labels.push('Truck');notes.push('No pickups are listed yet — ask an advisor to source one.');}
  if(/\b(in ghana|locally available|available now|local stock)\b/.test(text)){filters.status='In Ghana';labels.push('In Ghana');}
  if(/\b(import|imported|to import)\b/.test(text)){filters.status='To import';labels.push('To import');}
  if(/\b(red|black|white|blue|silver|grey|gray|green|gold)\b/.test(text))notes.push('Colour is not recorded in this demo; the team can confirm it.');

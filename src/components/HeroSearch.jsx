@@ -1,30 +1,51 @@
 import { useState } from 'react';
 
-const suggestions = ['Corolla under 200k', 'A car for Bolt under 150k', 'SUV in Ghana', 'A truck for my business'];
+const suggestions = [
+  { label: 'Corolla under GH₵200k', query: 'Corolla under GH₵200k' },
+  { label: 'Car for Bolt', query: 'car for Bolt' },
+  { label: 'Family SUV', query: 'family SUV' },
+  { label: 'Business pickup', query: 'business pickup' },
+];
 
 export default function HeroSearch({ onSearch }) {
   const [value, setValue] = useState('');
   function submit(text = value) {
-    if (text.trim()) onSearch(text.trim());
+    const next = String(text || '').trim();
+    if (next) onSearch(next);
   }
   return (
-    <div className="finder-band" data-reveal>
+    <section className="finder-band" aria-labelledby="finder-title" data-reveal>
       <div className="finder-intro">
-        <h2>Tell us what you need.</h2>
-        <p>Describe the car, your budget or how you will use it. We search the vehicles we list.</p>
+        <h2 id="finder-title">Tell us what you&apos;re looking for.</h2>
+        <p>Have a car or budget in mind? Describe it and we&apos;ll help you explore your options.</p>
       </div>
       <div className="finder-body">
         <form className="natural-search" role="search" onSubmit={(e) => { e.preventDefault(); submit(); }}>
           <label className="sr-only" htmlFor="hero-query">Describe the vehicle you need</label>
-          <input id="hero-query" value={value} onChange={(e) => setValue(e.target.value)} required maxLength={400} placeholder="An automatic Corolla under GH₵200k" autoComplete="off" />
-          <button type="submit" className="button button-accent">Search</button>
+          <input
+            id="hero-query"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            required
+            maxLength={400}
+            placeholder="e.g. Corolla under GH₵200k"
+            autoComplete="off"
+            enterKeyHint="search"
+          />
+          <button type="submit" className="button button-brand">Find my car</button>
         </form>
-        <div className="query-suggestions" aria-label="Example searches">
+        <div className="query-suggestions" aria-label="Suggested searches">
           {suggestions.map((s) => (
-            <button key={s} type="button" onClick={() => { setValue(s); submit(s); }}>{s}</button>
+            <button
+              key={s.query}
+              type="button"
+              onClick={() => { setValue(s.query); submit(s.query); }}
+            >
+              {s.label}
+            </button>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

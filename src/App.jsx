@@ -117,7 +117,7 @@ export default function App() {
           <div className="source-actions" data-reveal>
             <p>A city EV for your commute, a family SUV, a specific truck or machine. Describe what you need and your budget. You don’t need the exact model.</p>
             <div className="choice">
-              <button className="button button-accent" onClick={() => setView({ kind: 'enquiry', channel: 'whatsapp' })}>Describe it on WhatsApp</button>
+              <button className="button button-on-brand" onClick={() => setView({ kind: 'enquiry', channel: 'whatsapp' })}>Describe it on WhatsApp</button>
               <span aria-hidden="true">or</span>
               <button className="button button-outline" onClick={() => setView({ kind: 'enquiry', channel: 'email' })}>Send an email enquiry</button>
             </div>
@@ -153,7 +153,7 @@ export default function App() {
               <p>Contact details to be confirmed</p>
             </div>
           </div>
-          <button className="button button-accent" onClick={() => enquire('General enquiries')}>Start a conversation</button>
+          <button className="button button-on-brand" onClick={() => enquire('General enquiries')}>Start a conversation</button>
         </div>
         <a className="footer-logo" href="#" aria-label="Central Auto Ltd, back to top">
           <img src="/logo.svg" alt="" width="1035" height="426" decoding="async" loading="lazy" />

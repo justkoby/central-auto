@@ -422,11 +422,6 @@ export default function EvHero({ onEnquire, onDetail }) {
                 role="group"
                 aria-label={`${item.fullName}`}
               >
-                {/* Large Background Typography Watermark Number */}
-                <div className="ev-hero-watermark-number" aria-hidden="true">
-                  {item.indexStr}
-                </div>
-
                 {/* Vehicle Cutout with Transparent Baseline & Ground Shadow */}
                 <div className="ev-hero-car-wrapper">
                   <img

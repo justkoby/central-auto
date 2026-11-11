@@ -36,11 +36,21 @@ export default function Inventory({ filters, setFilters, onFilterSearch, searchS
             {!searchSummary.meaningful && <p>We could not read a make, model, body style or budget in that. Try one, or send the description to the team.</p>}
             <div className="interpreted-filters">{searchSummary.labels.map((label) => <span key={label}>{label}</span>)}</div>
             {searchSummary.notes.map((note) => <p key={note}>{note}</p>)}
-            {searchSummary.meaningful && <p>{list.length ? `${list.length} ${searchSummary.notes.length ? 'potential matches' : 'matching listings'} in the demo collection.` : 'No listed vehicles match these preferences.'}</p>}
+            {searchSummary.meaningful && (
+              <p>
+                {list.length
+                  ? `${list.length} ${
+                      searchSummary.notes.length
+                        ? (list.length === 1 ? 'potential match' : 'potential matches')
+                        : (list.length === 1 ? 'matching listing' : 'matching listings')
+                    } in the demo collection.`
+                  : 'No listed vehicles match these preferences.'}
+              </p>
+            )}
           </div>
           <div className="search-summary-actions">
             <button className="button button-outline" onClick={onClearQuery}>Clear search</button>
-            <button className="button button-accent" onClick={onRequest}>Ask the team</button>
+            <button className="button button-brand" onClick={onRequest}>Ask an advisor on WhatsApp</button>
           </div>
         </div>
       )}
@@ -98,10 +108,14 @@ export default function Inventory({ filters, setFilters, onFilterSearch, searchS
         </div>
       ) : (
         <div className="empty">
-          <h3>No cars match just yet.</h3>
-          <p>Try another filter or ask us to source your car.</p>
+          <h3>{searchSummary?.raw ? 'Nothing in the list matches that yet.' : 'No cars match just yet.'}</h3>
+          <p>
+            {searchSummary?.raw
+              ? 'We can still help. Message an advisor on WhatsApp with what you need, or widen your search.'
+              : 'Try another filter or ask us to source your car.'}
+          </p>
           <div className="actions">
-            <button className="button button-accent" onClick={onRequest}>Send my request on WhatsApp</button>
+            <button className="button button-brand" onClick={onRequest}>Chat with an advisor on WhatsApp</button>
             <button className="button button-outline" onClick={onReset}>Reset filters</button>
           </div>
         </div>

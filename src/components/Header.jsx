@@ -22,19 +22,30 @@ export default function Header({ savedCount, savedOnly, onSaved, onContact }) {
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
+  useEffect(() => {
+    if (!open) return;
+    const { style } = document.body;
+    const previous = style.overflow;
+    style.overflow = 'hidden';
+    document.documentElement.classList.add('nav-locked');
+    return () => {
+      style.overflow = previous;
+      document.documentElement.classList.remove('nav-locked');
+    };
+  }, [open]);
   const close = () => setOpen(false);
   return (
-    <header className={`site-nav ${solid || open ? 'is-solid' : ''}`}>
+    <header className={`site-nav ${solid || open ? 'is-solid' : ''} ${open ? 'is-menu-open' : ''}`}>
       <nav aria-label="Main navigation">
         <a className="logo" href="#" aria-label="Central Auto Ltd home" onClick={close}>
           <img src="/logo.svg" alt="" width="1035" height="426" decoding="async" fetchPriority="high" />
         </a>
         <div id="main-navigation" className={`navlinks ${open ? 'open' : ''}`}>
-          {links.map(([href, label]) => (
-            <a key={href} href={href} onClick={close}>{label}</a>
+          {links.map(([href, label], i) => (
+            <a key={href} href={href} onClick={close} style={{ '--i': i }}>{label}</a>
           ))}
-          <button className="navlink-button mobile-only" onClick={() => { close(); onSaved(); }}>Saved cars ({savedCount})</button>
-          <button className="button button-solid mobile-only" onClick={() => { close(); onContact(); }}>Talk to us</button>
+          <button className="navlink-button mobile-only" style={{ '--i': links.length }} onClick={() => { close(); onSaved(); }}>Saved cars ({savedCount})</button>
+          <button className="button button-solid mobile-only" style={{ '--i': links.length + 1 }} onClick={() => { close(); onContact(); }}>Talk to us</button>
         </div>
         <div className="navright">
           <button className={`saved-link ${savedOnly ? 'active' : ''}`} onClick={() => { close(); onSaved(); }} aria-label={`Saved cars, ${savedCount}`}>

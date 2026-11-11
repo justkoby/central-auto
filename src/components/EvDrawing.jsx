@@ -37,7 +37,7 @@ export default function EvDrawing({ variant = 'city', body = '#03211a', glass = 
       <path d={`M${d.shut[0]} ${d.shut[1] + 56} L${d.shut[0]} ${d.shut[2]}`} stroke={glass} strokeWidth="3" />
       {/* lamps and charge port */}
       <path d={`M${d.lamp - 24} 226 L${d.lamp + 2} 232 L${d.lamp + 4} 244 L${d.lamp - 24} 238 Z`} fill="#fff4d6" />
-      <rect x={d.wheels[0] - d.r - 46} y="222" width="14" height="26" fill="#ed6739" />
+      <rect x={d.wheels[0] - d.r - 46} y="222" width="14" height="26" fill="#f54b00" />
       <circle cx={front + 66} cy="216" r="6" fill="#7ee0b5" />
       {d.wheels.map((x) => (
         <g key={x}>

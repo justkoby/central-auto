@@ -1,49 +1,72 @@
-/* Design tokens: primitive -> semantic -> a few component tokens.
-   Components reference semantic tokens only. Dark-only: the page is one dark room. */
+/* Central Auto Ltd brand tokens.
+   Primary: dark green #003428 + white. Orange #F54B00 is a sparing accent.
+   Secondary: yellow-green, bright yellow, muted green. No navy/blue page grounds. */
 :root {
-  /* primitive */
-  --navy-950: #070b16;
-  --navy-900: #0b1120;
-  --navy-800: #111a30;
-  --navy-700: #1a2744;
-  --cobalt-700: #16327f;
-  --cobalt-800: #0f2360;
+  /* primitive — brand */
+  --green-950: #021f18;
   --green-900: #003428;
   --green-800: #0a4636;
-  --green-950: #021f18;
-  --orange-500: #ed6739;
-  --orange-600: #d95b30;
-  --ink-50: #eef0f4;
-  --ink-300: #b9c0cf;
-  --ink-500: #7d88a0;
+  --green-700: #146048;
+  --green-muted: #5a7a6c;
+  --yellow-green: #a8c928;
+  --yellow-bright: #f5d76e;
+  --charcoal-900: #11141a;
+  --charcoal-950: #0a0c10;
+  --paper-50: #f4f5f3;
+  --paper-100: #ebece8;
+  --paper-200: #dce0db;
+  --white: #ffffff;
+  --orange-500: #f54b00;
+  --orange-600: #d94300;
+  --ink-on-dark: #f4f5f3;
+  --ink-muted-on-dark: #b6d3c9;
+  --border-green-grey: #c5cec8;
 
-  /* semantic */
-  --bg: var(--navy-900);
-  --bg-deep: var(--navy-950);
-  --surface: var(--navy-800);
-  --surface-raised: var(--navy-700);
+  /* semantic — light editorial room */
+  --bg: var(--paper-50);
+  --bg-deep: var(--green-900);
+  --surface: var(--white);
+  --surface-raised: var(--paper-100);
   --brand: var(--green-900);
-  --ink: var(--ink-50);
-  --muted: var(--ink-300);
+  --brand-hover: var(--green-800);
+  --charcoal: var(--charcoal-900);
+  --paper: var(--paper-50);
+  --ink: var(--charcoal-900);
+  --muted: var(--green-muted);
   --accent: var(--orange-500);
   --accent-hover: var(--orange-600);
-  --on-accent: #1a0d07;
-  --focus: #ffffff;
+  --on-accent: var(--white);
+  --on-brand: var(--ink-on-dark);
+  --focus: var(--green-900);
+  --border-subtle: var(--border-green-grey);
+  --secondary: var(--yellow-green);
+  --secondary-soft: var(--yellow-bright);
 
-  /* type */
-  --font-display: 'Imbue', 'Times New Roman', serif;
-  --font-text: 'Albert Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* type — General Sans editorial hierarchy */
+  --font-sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-sans);
+  --font-text: var(--font-sans);
+  --weight-book: 400;
+  --weight-body: 400;
+  --weight-ui: 500;
+  --weight-emphasis: 600;
+  --weight-strong: 700;
+  --weight-heavy: 700;
+  --tracking-tight: -0.03em;
+  --tracking-snug: -0.015em;
+  --tracking-label: 0.08em;
   --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
   --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
-  --step-head: clamp(2.5rem, 1.4rem + 4.4vw, 5rem);
-  --step-display: clamp(3.25rem, 1.6rem + 7.4vw, 9rem);
+  --step-head: clamp(2.25rem, 1.35rem + 3.6vw, 4.25rem);
+  --step-display: clamp(2.75rem, 1.5rem + 5.5vw, 6.5rem);
 
-  /* layout and motion (component-level) */
+  /* layout and motion */
   --gutter: clamp(20px, 4vw, 56px);
   --section-gap: clamp(88px, 12vw, 200px);
   --nav-h: 72px;
   --radius-button: 999px;
+  --radius-input: 12px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --dur-fast: 160ms;
   --dur-base: 500ms;

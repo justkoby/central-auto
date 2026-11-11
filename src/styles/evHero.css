@@ -1,6 +1,6 @@
 /* ==========================================================================
    CENTRAL AUTO LTD — PREMIUM CONTINUOUS EV SHOWCASE
-   Studio Lighting • Continuous Horizon • Manrope & Inter Typography
+   Studio Lighting • Continuous Horizon • General Sans Typography
    ========================================================================== */
 
 :root {
@@ -9,24 +9,24 @@
   --ev-ink: #0d121c;
   --ev-ink-muted: #475467;
   --ev-ink-faint: #64748b;
-  --ev-accent: #ed6739;
-  --ev-accent-hover: #d95527;
-  --ev-slot-w: clamp(640px, 52vw, 860px);
-  --ev-slot-gap: clamp(40px, 6vw, 90px);
+  --ev-accent: #f54b00;
+  --ev-accent-hover: #d94300;
+  --ev-slot-w: clamp(600px, 48vw, 800px);
+  --ev-slot-gap: clamp(64px, 8vw, 120px);
   --ribbon-pos: 1;
 }
 
 @media (max-width: 1024px) {
   :root {
-    --ev-slot-w: clamp(520px, 65vw, 700px);
-    --ev-slot-gap: 36px;
+    --ev-slot-w: clamp(480px, 58vw, 640px);
+    --ev-slot-gap: 48px;
   }
 }
 
 @media (max-width: 768px) {
   :root {
-    --ev-slot-w: 84vw;
-    --ev-slot-gap: 20px;
+    --ev-slot-w: 78vw;
+    --ev-slot-gap: 48px;
   }
 }
 
@@ -36,12 +36,12 @@
   height: 100svh;
   min-height: 640px;
   max-height: 980px;
-  background-color: var(--ev-bg);
+  background-color: var(--paper, var(--ev-bg));
   overflow: hidden;
   user-select: none;
   touch-action: pan-y;
   cursor: grab;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-sans);
   color: var(--ev-ink);
 }
 
@@ -100,7 +100,7 @@
 }
 
 .ev-hero-badge-pill {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -113,7 +113,7 @@
 }
 
 .ev-hero-badge-sub {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--ev-ink-faint);
@@ -122,21 +122,23 @@
 }
 
 .ev-hero-headline {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(2.2rem, 3.6vw, 3.6rem);
-  font-weight: 800;
+  font-weight: var(--weight-strong);
   color: var(--ev-ink);
-  line-height: 1.05;
-  letter-spacing: -0.035em;
+  line-height: 1.06;
+  letter-spacing: var(--tracking-tight);
   margin: 8px 0 10px 0;
   text-transform: none;
+  text-wrap: balance;
 }
 
 .ev-hero-subline {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(1rem, 1.15vw, 1.25rem);
+  font-weight: var(--weight-body);
   color: var(--ev-ink-muted);
-  line-height: 1.45;
+  line-height: 1.5;
   margin: 0;
   max-width: 36ch;
 }
@@ -162,7 +164,7 @@
 }
 
 .ev-hero-brand-name {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -171,12 +173,12 @@
 }
 
 .ev-hero-model-title {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.35rem;
-  font-weight: 700;
+  font-weight: var(--weight-strong);
   color: var(--ev-ink);
   margin: 3px 0 2px 0;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--tracking-snug);
 }
 
 .ev-hero-powertrain {
@@ -212,7 +214,7 @@
 }
 
 .ev-hero-spec-val {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.9rem;
   color: var(--ev-ink);
   font-weight: 700;
@@ -246,9 +248,10 @@
   color: #ffffff;
   padding: 12px 22px;
   border-radius: 999px;
-  font-family: 'Manrope', sans-serif;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-weight: var(--weight-emphasis);
   font-size: 0.92rem;
+  letter-spacing: -0.01em;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
@@ -327,21 +330,9 @@
   cursor: pointer;
 }
 
-/* Giant Architectural Typography Watermark Number */
+/* Watermark numbers removed — keep rule inert if markup reappears */
 .ev-hero-watermark-number {
-  position: absolute;
-  top: 48%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Manrope', sans-serif;
-  font-size: clamp(220px, 32vw, 480px);
-  font-weight: 800;
-  color: rgba(0, 0, 0, 0.038);
-  line-height: 1;
-  pointer-events: none;
-  z-index: 1;
-  letter-spacing: -0.06em;
-  user-select: none;
+  display: none !important;
 }
 
 /* Vehicle Cutout & Ground Shadow Baseline */
@@ -361,8 +352,21 @@
   height: auto;
   object-fit: contain;
   pointer-events: none;
-  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 18px 34px rgba(13, 18, 28, 0.14));
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+.ev-hero-car-wrapper::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 7%;
+  width: 62%;
+  height: 22px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(13, 18, 28, 0.22) 0%, rgba(13, 18, 28, 0.08) 42%, transparent 72%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .ev-hero-car-slot:not(.is-active) .ev-hero-vehicle-img {
@@ -404,7 +408,7 @@
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.04);
   color: var(--ev-ink-muted);
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
   border: 1px solid transparent;
@@ -427,7 +431,7 @@
 .ev-hero-pill-num {
   font-size: 0.75rem;
   opacity: 0.7;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .ev-hero-pill-label {
@@ -487,7 +491,7 @@
 }
 
 .ev-hero-counter {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--ev-ink-faint);
@@ -566,7 +570,7 @@
 }
 
 .ev-hero-modal-cat {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -575,9 +579,11 @@
 }
 
 .ev-hero-modal-header h3 {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.6rem;
-  font-weight: 800;
+  font-weight: var(--weight-strong);
+  letter-spacing: var(--tracking-snug);
+  line-height: 1.15;
   color: var(--ev-ink);
   margin: 4px 0 2px 0;
 }
@@ -585,7 +591,8 @@
 .ev-hero-modal-price {
   font-size: 0.95rem;
   color: var(--ev-ink-faint);
-  font-weight: 600;
+  font-weight: var(--weight-strong);
+  letter-spacing: var(--tracking-snug);
   margin: 0;
 }
 
@@ -634,7 +641,7 @@
 }
 
 .ev-hero-modal-card .val {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: 1rem;
   font-weight: 700;
   color: var(--ev-ink);
@@ -653,7 +660,7 @@
 }
 
 .ev-hero-highlights-box h4 {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.9rem;
   font-weight: 700;
   margin: 0 0 10px 0;
@@ -697,94 +704,152 @@
   }
 }
 
-/* Mobile & Small Tablets (768px and below) */
+/* Mobile & Small Tablets (768px and below): unified full-screen product showcase */
 @media (max-width: 768px) {
   .ev-hero-showcase {
-    min-height: 600px;
+    min-height: 100svh;
+    max-height: none;
+    height: 100svh;
+    background-color: var(--paper, #f4f5f3);
   }
 
   .ev-hero-header-area {
-    position: relative;
-    top: auto;
-    left: auto;
-    padding: clamp(74px, 11vh, 88px) var(--gutter) 0;
-    max-width: 100%;
-    text-align: left;
-    pointer-events: auto;
+    position: absolute;
+    top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 4px);
+    left: var(--gutter);
+    right: var(--gutter);
+    max-width: none;
+    z-index: 16;
+    pointer-events: none;
+  }
+
+  .ev-hero-category-tag {
+    margin-bottom: 6px;
   }
 
   .ev-hero-headline {
-    font-size: clamp(1.75rem, 6.5vw, 2.2rem);
-    margin: 6px 0 6px 0;
+    font-size: clamp(1.7rem, 7vw, 2.15rem);
+    font-weight: var(--weight-strong);
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.05;
+    margin: 0 0 6px;
+    max-width: 13ch;
   }
 
   .ev-hero-subline {
-    font-size: 0.92rem;
-    max-width: 100%;
+    font-size: 0.86rem;
+    line-height: 1.35;
+    max-width: 24ch;
+    color: var(--ev-ink-muted);
+  }
+
+  /* Car stage: clear breath under copy before vehicle */
+  .ev-hero-track-viewport {
+    inset:
+      calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 124px)
+      0
+      calc(176px + env(safe-area-inset-bottom, 0px))
+      0;
+    align-items: flex-start;
+    overflow: visible;
+  }
+
+  .ev-hero-continuous-track {
+    height: 100%;
+    align-items: flex-start;
+  }
+
+  .ev-hero-car-slot {
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 22px;
   }
 
   .ev-hero-car-wrapper {
-    padding-top: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .ev-hero-vehicle-img {
-    max-width: 86vw;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    max-height: min(44svh, 100%);
+    margin: 0;
+    object-fit: contain;
+    object-position: center center;
+    filter: drop-shadow(0 22px 34px rgba(13, 18, 28, 0.22));
   }
 
-  /* Compact info bar directly above category pills */
+  .ev-hero-car-wrapper::after {
+    bottom: 2%;
+    width: 58%;
+    height: 18px;
+    background: radial-gradient(ellipse at center, rgba(13, 18, 28, 0.26) 0%, rgba(13, 18, 28, 0.08) 48%, transparent 74%);
+  }
+
+  /* Compact product card above category controls */
   .ev-hero-info-panel {
     position: absolute;
     top: auto;
-    bottom: 112px;
-    left: 16px;
-    right: 16px;
+    bottom: calc(100px + env(safe-area-inset-bottom, 0px));
+    left: max(14px, env(safe-area-inset-left));
+    right: max(14px, env(safe-area-inset-right));
     width: auto;
     max-width: none;
     box-sizing: border-box;
     padding: 0;
-    background: none;
-    border: none;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    z-index: 12;
+    z-index: 14;
   }
 
   .ev-hero-panel-inner {
     width: 100%;
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 14px;
-    padding: 10px 14px;
-    display: flex;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 16px;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    gap: 10px 12px;
+    border: 1px solid rgba(17, 20, 26, 0.08);
+    box-shadow: 0 10px 28px rgba(13, 18, 28, 0.1);
     overflow: hidden;
   }
 
   .ev-hero-panel-head {
-    flex: 1 1 auto;
     min-width: 0;
     overflow: hidden;
   }
 
   .ev-hero-brand-name {
     font-size: 0.68rem;
+    font-weight: var(--weight-emphasis);
+    letter-spacing: var(--tracking-label);
     display: block;
-    line-height: 1.1;
+    line-height: 1.15;
+    color: var(--ev-accent);
   }
 
   .ev-hero-model-title {
-    font-size: 0.94rem;
+    font-size: 1.05rem;
+    font-weight: var(--weight-strong);
+    letter-spacing: var(--tracking-snug);
+    line-height: 1.15;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 2px 0 0 0;
+    margin: 3px 0 0;
+    color: var(--charcoal, #11141a);
   }
 
   .ev-hero-powertrain,
@@ -807,27 +872,46 @@
   }
 
   .ev-hero-cta-btn {
-    padding: 8px 14px;
-    font-size: 0.8rem;
+    min-height: 44px;
+    padding: 0 16px;
+    font-size: 0.84rem;
+    font-weight: var(--weight-emphasis);
     gap: 6px;
     white-space: nowrap;
+    background: var(--charcoal, #11141a);
   }
 
   .ev-hero-bottom-bar {
-    bottom: 14px;
-    gap: 8px;
+    left: max(12px, env(safe-area-inset-left));
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    gap: 10px;
     flex-direction: column;
     align-items: stretch;
+    z-index: 14;
   }
 
   .ev-hero-category-nav {
-    justify-content: center;
-    gap: 6px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .ev-hero-category-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .ev-hero-nav-pill {
-    padding: 6px 12px;
-    font-size: 0.78rem;
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 0 14px;
+    font-size: 0.8rem;
+    font-weight: var(--weight-emphasis);
   }
 
   .ev-hero-pill-model {
@@ -836,6 +920,23 @@
 
   .ev-hero-timeline-controls {
     justify-content: space-between;
+    gap: 12px;
+  }
+
+  .ev-hero-progress-track {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+
+  .ev-hero-arrow-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ev-hero-counter {
+    min-width: 3.5ch;
+    text-align: center;
   }
 
   .ev-hero-drag-hint {
@@ -843,16 +944,93 @@
   }
 }
 
-/* Small Mobile (360px – 390px) */
+/* Narrow phones (320–400px) */
 @media (max-width: 400px) {
   .ev-hero-headline {
-    font-size: 1.55rem;
+    font-size: clamp(1.55rem, 7.2vw, 1.85rem);
+    max-width: 12ch;
   }
-  .ev-hero-nav-pill {
-    padding: 5px 9px;
-    font-size: 0.72rem;
+
+  .ev-hero-subline {
+    font-size: 0.86rem;
+    max-width: 26ch;
   }
+
+  .ev-hero-header-area {
+    top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 2px);
+  }
+
+  .ev-hero-category-tag {
+    margin-bottom: 5px;
+  }
+
+  .ev-hero-headline {
+    margin: 0 0 5px;
+  }
+
+  .ev-hero-track-viewport {
+    inset:
+      calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 120px)
+      0
+      calc(176px + env(safe-area-inset-bottom, 0px))
+      0;
+  }
+
+  .ev-hero-car-slot {
+    padding-top: 20px;
+  }
+
+  .ev-hero-vehicle-img {
+    max-height: min(42svh, 100%);
+  }
+
   .ev-hero-info-panel {
-    bottom: 90px;
+    bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .ev-hero-panel-inner {
+    padding: 11px 12px;
+  }
+
+  .ev-hero-model-title {
+    font-size: 0.98rem;
+  }
+
+  .ev-hero-nav-pill {
+    padding: 0 12px;
+    font-size: 0.74rem;
+  }
+
+  .ev-hero-pill-label {
+    max-width: 9ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 340px) {
+  .ev-hero-badge-sub {
+    display: none;
+  }
+
+  .ev-hero-subline {
+    display: none;
+  }
+
+  .ev-hero-track-viewport {
+    inset:
+      calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 108px)
+      0
+      calc(176px + env(safe-area-inset-bottom, 0px))
+      0;
+  }
+
+  .ev-hero-car-slot {
+    padding-top: 20px;
+  }
+
+  .ev-hero-nav-pill {
+    padding: 0 10px;
   }
 }
