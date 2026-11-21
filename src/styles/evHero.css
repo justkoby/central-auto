@@ -25,8 +25,8 @@
 
 @media (max-width: 768px) {
   :root {
-    --ev-slot-w: 78vw;
-    --ev-slot-gap: 48px;
+    --ev-slot-w: 86vw;
+    --ev-slot-gap: 36px;
   }
 }
 
@@ -330,9 +330,14 @@
   cursor: pointer;
 }
 
-/* Watermark numbers removed — keep rule inert if markup reappears */
-.ev-hero-watermark-number {
+/* Watermark numbers fully suppressed */
+.ev-hero-watermark-number,
+.polestar-watermark {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  font-size: 0 !important;
+  content: none !important;
 }
 
 /* Vehicle Cutout & Ground Shadow Baseline */
@@ -743,15 +748,15 @@
     color: var(--ev-ink-muted);
   }
 
-  /* Car stage: clear breath under copy before vehicle */
+  /* Car stage: modest gap under copy, vehicle fills mid band without ghosts */
   .ev-hero-track-viewport {
     inset:
-      calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 124px)
+      calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 108px)
       0
-      calc(176px + env(safe-area-inset-bottom, 0px))
+      calc(168px + env(safe-area-inset-bottom, 0px))
       0;
     align-items: flex-start;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .ev-hero-continuous-track {
@@ -764,7 +769,8 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding-top: 22px;
+    padding-top: 16px;
+    overflow: hidden;
   }
 
   .ev-hero-car-wrapper {
@@ -773,26 +779,28 @@
     height: auto;
     max-height: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
   }
 
+
   .ev-hero-vehicle-img {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    max-height: min(44svh, 100%);
-    margin: 0;
+    width: auto;
+    max-width: 120vw;
+    height: min(38svh, 280px);
+    max-height: none;
+    margin: 0 auto;
     object-fit: contain;
     object-position: center center;
-    filter: drop-shadow(0 22px 34px rgba(13, 18, 28, 0.22));
+    filter: drop-shadow(0 16px 28px rgba(13, 18, 28, 0.16));
   }
 
   .ev-hero-car-wrapper::after {
-    bottom: 2%;
-    width: 58%;
-    height: 18px;
-    background: radial-gradient(ellipse at center, rgba(13, 18, 28, 0.26) 0%, rgba(13, 18, 28, 0.08) 48%, transparent 74%);
+    bottom: 4%;
+    width: 52%;
+    height: 14px;
+    opacity: 0.7;
+    background: radial-gradient(ellipse at center, rgba(13, 18, 28, 0.2) 0%, rgba(13, 18, 28, 0.06) 50%, transparent 74%);
   }
 
   /* Compact product card above category controls */
@@ -970,18 +978,18 @@
 
   .ev-hero-track-viewport {
     inset:
-      calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 120px)
+      calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 104px)
       0
-      calc(176px + env(safe-area-inset-bottom, 0px))
+      calc(164px + env(safe-area-inset-bottom, 0px))
       0;
   }
 
   .ev-hero-car-slot {
-    padding-top: 20px;
+    padding-top: 14px;
   }
 
   .ev-hero-vehicle-img {
-    max-height: min(42svh, 100%);
+    height: min(36svh, 260px);
   }
 
   .ev-hero-info-panel {
@@ -1020,14 +1028,14 @@
 
   .ev-hero-track-viewport {
     inset:
-      calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 108px)
+      calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 84px)
       0
-      calc(176px + env(safe-area-inset-bottom, 0px))
+      calc(160px + env(safe-area-inset-bottom, 0px))
       0;
   }
 
   .ev-hero-car-slot {
-    padding-top: 20px;
+    padding-top: 6px;
   }
 
   .ev-hero-nav-pill {

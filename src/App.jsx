@@ -9,6 +9,8 @@ import EnquiryDialog from './components/EnquiryDialog';
 import ElectricFeature from './components/ElectricFeature';
 import ElectricGhana from './components/ElectricGhana';
 import Categories from './components/Categories';
+import FeaturedEVShowcase from './components/FeaturedEVShowcase';
+import GovernmentPaymentEstimator from './components/GovernmentPaymentEstimator';
 import useReveal from './components/useReveal';
 import { vehicles, matchesCollection } from './data/vehicles';
 import { interpretVehicleQuery, matchesVehicleQuery } from './lib/vehicleSearch';
@@ -39,6 +41,7 @@ export default function App() {
   const [activeQuery, setActiveQuery] = useState('');
   const [view, setView] = useState(null);
   const [toast, setToast] = useState('');
+  const [selectedEstimateVehicle, setSelectedEstimateVehicle] = useState(null);
 
   useReveal();
   useEffect(() => {
@@ -87,8 +90,16 @@ export default function App() {
       <Header savedCount={saved.length} savedOnly={savedOnly} onSaved={() => { setSavedOnly(true); scrollToInventory(); }} onContact={() => enquire('General enquiries')} />
       <main id="main">
         <Hero onEnquire={enquire} onDetail={(vehicle) => setView({ kind: 'vehicle', vehicle })} />
+        <FeaturedEVShowcase
+          onEnquire={enquire}
+          onDetail={(vehicle) => setView({ kind: 'vehicle', vehicle })}
+          onEstimate={(car) => {
+            setSelectedEstimateVehicle(car);
+            const el = document.getElementById('financing-estimator');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
         <HeroSearch onSearch={search} />
-        <ElectricFeature onEnquire={enquire} />
         <ElectricGhana onEnquire={enquire} />
         <Categories onExplore={explore} onEnquire={enquire} />
         <Inventory
@@ -110,6 +121,11 @@ export default function App() {
           onDetail={(vehicle) => setView({ kind: 'vehicle', vehicle })}
           onReset={reset}
         />
+        <GovernmentPaymentEstimator
+          selectedVehicle={selectedEstimateVehicle}
+          onEnquire={enquire}
+        />
+        <ElectricFeature onEnquire={enquire} />
         <Services onEnquire={enquire} />
 
         <section className="source" id="source" aria-labelledby="source-title">
@@ -139,6 +155,8 @@ export default function App() {
           <div className="footer-cols">
             <nav aria-label="Explore">
               <h2>Explore</h2>
+              <a href="#featured-ev">Featured EVs (Rivian rail)</a>
+              <a href="#financing-estimator">Payment estimator</a>
               <a href="#electric">Electric vehicles</a>
               <a href="#inventory">Our collection</a>
               <a href="#source">Vehicle sourcing</a>

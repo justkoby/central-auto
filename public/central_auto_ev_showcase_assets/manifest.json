@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "atto-3",
+    "displayName": "BYD Atto 3",
+    "sourceIsAIConcept": true,
+    "assetDimensions": [
+      1921,
+      819
+    ],
+    "wheels": [
+      {
+        "cx": 0.19469026548672566,
+        "cy": 0.7582417582417582,
+        "diameter": 0.15720978656949505,
+        "wheel_file": "wheel-front.png",
+        "radius_px": 151
+      },
+      {
+        "cx": 0.8068714211348256,
+        "cy": 0.7533577533577533,
+        "diameter": 0.1592920353982301,
+        "wheel_file": "wheel-rear.png",
+        "radius_px": 153
+      }
+    ]
+  },
+  {
+    "slug": "dolphin",
+    "displayName": "BYD Dolphin",
+    "sourceIsAIConcept": true,
+    "assetDimensions": [
+      1882,
+      836
+    ],
+    "wheels": [
+      {
+        "cx": 0.19394261424017004,
+        "cy": 0.7476076555023924,
+        "diameter": 0.16259298618490967,
+        "wheel_file": "wheel-front.png",
+        "radius_px": 153
+      },
+      {
+        "cx": 0.8241232731137088,
+        "cy": 0.7452153110047847,
+        "diameter": 0.16578108395324123,
+        "wheel_file": "wheel-rear.png",
+        "radius_px": 156
+      }
+    ]
+  },
+  {
+    "slug": "sealion-7-concept",
+    "displayName": "Sealion 7-inspired concept",
+    "sourceIsAIConcept": true,
+    "assetDimensions": [
+      1774,
+      887
+    ],
+    "wheels": [
+      {
+        "cx": 0.18883878241262683,
+        "cy": 0.7215332581736189,
+        "diameter": 0.17249154453213078,
+        "wheel_file": "wheel-front.png",
+        "radius_px": 153
+      },
+      {
+        "cx": 0.8094701240135288,
+        "cy": 0.7181510710259301,
+        "diameter": 0.17249154453213078,
+        "wheel_file": "wheel-rear.png",
+        "radius_px": 153
+      }
+    ]
+  }
+]

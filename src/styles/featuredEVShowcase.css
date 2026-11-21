@@ -1,0 +1,617 @@
+/* ==========================================================================
+   Rivian-Inspired Featured Electric Vehicle Showcase Rail
+   Clean warm-white aesthetic, architectural typography, wheel rotation physics
+   ========================================================================== */
+
+.rivian-showcase-section {
+  position: relative;
+  width: 100%;
+  background-color: #f7f7f5;
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% 25%, rgba(255, 255, 255, 0.9) 0%, rgba(247, 247, 245, 0.5) 65%, transparent 100%),
+    linear-gradient(180deg, #f4f4f1 0%, #f7f7f5 18%, #f8f8f6 82%, #f1f1ee 100%);
+  color: #11161d;
+  scroll-margin-top: var(--nav-h, 72px);
+  overflow: clip;
+}
+
+/* Pinned Wrapper on Desktop */
+.rivian-pin-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 660px;
+  max-height: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: calc(var(--nav-h, 72px) + 16px);
+  padding-bottom: 20px;
+  padding-left: clamp(20px, 4vw, 56px);
+  padding-right: clamp(20px, 4vw, 56px);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Top Meta & Navigation Bar
+   -------------------------------------------------------------------------- */
+.rivian-top-bar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.rivian-brand-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rivian-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(17, 22, 29, 0.07);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1a222c;
+}
+
+.rivian-category-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(17, 22, 29, 0.6);
+  letter-spacing: 0.02em;
+}
+
+.rivian-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rivian-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: 'Manrope', sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+  color: rgba(17, 22, 29, 0.5);
+  margin-right: 4px;
+}
+
+.rivian-counter-current {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #11161d;
+}
+
+.rivian-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(17, 22, 29, 0.16);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #11161d;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.rivian-arrow-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.rivian-arrow-btn:hover:not(:disabled) {
+  background: #11161d;
+  color: #ffffff;
+  border-color: #11161d;
+  transform: translateY(-1px);
+}
+
+.rivian-arrow-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: rgba(17, 22, 29, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   Central Vehicle Runway Stage
+   -------------------------------------------------------------------------- */
+.rivian-stage-viewport {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: visible;
+  padding: 10px 0;
+}
+
+/* Desktop continuous track */
+.rivian-desktop-track {
+  display: flex;
+  align-items: center;
+  gap: clamp(48px, 6vw, 96px);
+  will-change: transform;
+}
+
+.rivian-car-slot {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Car Stage & Wheel Composition */
+.rivian-car-stage {
+  position: relative;
+  height: clamp(200px, 32vh, 340px);
+  width: auto;
+  max-width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Architectural Model Lettering directly behind vehicle */
+.rivian-car-watermark {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(4.5rem, 13vw, 10.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: rgba(17, 22, 29, 0.085);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  line-height: 0.85;
+  user-select: none;
+}
+
+.rivian-car-body {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.rivian-car-body img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: drop-shadow(0 16px 28px rgba(17, 22, 29, 0.12));
+}
+
+/* Dynamic Ground Shadow */
+.rivian-ground-shadow {
+  position: absolute;
+  bottom: -4%;
+  left: 6%;
+  width: 88%;
+  height: 22px;
+  background: radial-gradient(ellipse at center, rgba(17, 22, 29, 0.36) 0%, rgba(17, 22, 29, 0.1) 52%, transparent 75%);
+  filter: blur(4px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Wheel Layer Positioning */
+.rivian-wheel-wrap {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.rivian-wheel-pic {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.rivian-wheel-pic img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: center center;
+  user-select: none;
+  -webkit-user-drag: none;
+  will-change: transform;
+}
+
+/* --------------------------------------------------------------------------
+   Bottom Information & Dual CTAs
+   -------------------------------------------------------------------------- */
+.rivian-bottom-info {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.rivian-info-header {
+  max-width: 760px;
+}
+
+.rivian-headline {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  color: #11161d;
+  margin: 0 0 2px 0;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.rivian-description {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.82rem, 1vw, 0.92rem);
+  color: rgba(17, 22, 29, 0.68);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Specs & Pricing Row */
+.rivian-specs-pricing-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3.5vw, 36px);
+  flex-wrap: wrap;
+  padding: 2px 0;
+}
+
+.rivian-price-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  border-right: 1px solid rgba(17, 22, 29, 0.12);
+  padding-right: clamp(16px, 3vw, 32px);
+}
+
+.rivian-price-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(17, 22, 29, 0.5);
+  font-weight: 600;
+}
+
+.rivian-price-val {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  font-weight: 800;
+  color: #11161d;
+  letter-spacing: -0.02em;
+}
+
+.rivian-price-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(17, 22, 29, 0.45);
+}
+
+.rivian-specs-grid {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 32px);
+}
+
+.rivian-spec-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.rivian-spec-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(17, 22, 29, 0.5);
+  font-weight: 600;
+}
+
+.rivian-spec-value {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.22rem);
+  font-weight: 700;
+  color: #11161d;
+  letter-spacing: -0.015em;
+}
+
+.rivian-spec-unit {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  color: rgba(17, 22, 29, 0.5);
+}
+
+.rivian-concept-disclaimer {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(17, 22, 29, 0.5);
+  margin: -2px 0 0 0;
+  max-width: 680px;
+}
+
+/* Dual Rounded CTA Buttons */
+.rivian-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.rivian-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: 999px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.rivian-btn-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.rivian-btn:hover .rivian-btn-icon {
+  transform: translateX(3px);
+}
+
+.rivian-btn-primary {
+  background: #11161d;
+  color: #ffffff;
+  border: 1px solid #11161d;
+  box-shadow: 0 4px 14px rgba(17, 22, 29, 0.16);
+}
+
+.rivian-btn-primary:hover {
+  background: #1e2632;
+  border-color: #1e2632;
+  box-shadow: 0 6px 20px rgba(17, 22, 29, 0.24);
+  transform: translateY(-1px);
+}
+
+.rivian-btn-secondary {
+  background: rgba(255, 255, 255, 0.85);
+  color: #11161d;
+  border: 1px solid rgba(17, 22, 29, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.rivian-btn-secondary:hover {
+  background: #ffffff;
+  border-color: rgba(17, 22, 29, 0.4);
+  box-shadow: 0 4px 14px rgba(17, 22, 29, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Indicator Navigation Dots */
+.rivian-dots-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.rivian-dot-pill {
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(17, 22, 29, 0.06);
+  color: rgba(17, 22, 29, 0.55);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rivian-dot-pill:hover {
+  background: rgba(17, 22, 29, 0.12);
+  color: #11161d;
+}
+
+.rivian-dot-pill.is-active {
+  background: #11161d;
+  color: #ffffff;
+  border-color: #11161d;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile & Responsive Adaptations (<= 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .rivian-pin-wrapper {
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    padding: calc(var(--nav-h, 60px) + 12px) 16px 32px;
+    gap: 16px;
+  }
+
+  .rivian-top-bar {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  .rivian-brand-indicator {
+    gap: 8px;
+  }
+
+  .rivian-pill-badge {
+    font-size: 0.68rem;
+    padding: 3px 9px;
+  }
+
+  .rivian-category-label {
+    font-size: 0.78rem;
+  }
+
+  .rivian-counter {
+    font-size: 0.82rem;
+  }
+
+  .rivian-counter-current {
+    font-size: 1rem;
+  }
+
+  .rivian-arrow-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .rivian-arrow-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .rivian-car-watermark {
+    font-size: clamp(3.4rem, 18vw, 6.5rem);
+    top: 48%;
+  }
+
+  .rivian-stage-viewport {
+    min-height: 200px;
+    width: 100vw;
+    margin-left: -16px;
+    margin-right: -16px;
+    overflow-x: hidden;
+  }
+
+  .rivian-mobile-track {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .rivian-mobile-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rivian-mobile-slot {
+    flex: 0 0 100vw;
+    width: 100vw;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .rivian-car-stage {
+    width: 90vw;
+    height: auto;
+  }
+
+  .rivian-specs-pricing-row {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .rivian-price-col {
+    border-right: none;
+    border-bottom: 1px solid rgba(17, 22, 29, 0.1);
+    padding-right: 0;
+    padding-bottom: 10px;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .rivian-specs-grid {
+    gap: 18px;
+  }
+
+  .rivian-cta-row {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .rivian-btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 13px 20px;
+  }
+
+  .rivian-dots-indicator {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .rivian-pin-wrapper {
+    height: auto !important;
+  }
+
+  .rivian-wheel-pic img {
+    transform: none !important;
+    transition: none !important;
+  }
+}
