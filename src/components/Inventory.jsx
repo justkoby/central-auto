@@ -56,14 +56,16 @@ export default function Inventory({ filters, setFilters, onFilterSearch, searchS
       )}
 
       <div className="inventory-tools">
-        <div className="tabs" role="group" aria-label="Vehicle collections">
-          {collectionFilters.map(({ id, label }) => (
-            <button key={id} className={`tab ${!savedOnly && bodyType === id ? 'active' : ''}`} aria-pressed={!savedOnly && bodyType === id} onClick={() => { setBodyType(id); setSavedOnly(false); }}>{label}</button>
-          ))}
-          <button className={`tab ${savedOnly ? 'active' : ''}`} aria-pressed={savedOnly} onClick={() => setSavedOnly(!savedOnly)}>Saved</button>
+        <div className="tools-left">
+          <div className="tabs" role="group" aria-label="Vehicle collections">
+            {collectionFilters.map(({ id, label }) => (
+              <button key={id} className={`tab ${!savedOnly && bodyType === id ? 'active' : ''}`} aria-pressed={!savedOnly && bodyType === id} onClick={() => { setBodyType(id); setSavedOnly(false); }}>{label}</button>
+            ))}
+            <button className={`tab ${savedOnly ? 'active' : ''}`} aria-pressed={savedOnly} onClick={() => setSavedOnly(!savedOnly)}>Saved</button>
+          </div>
+          <span className="inventory-count-badge" role="status">{list.length} {list.length === 1 ? 'vehicle' : 'vehicles'}</span>
         </div>
         <div className="tools-right">
-          <span role="status">{list.length} {list.length === 1 ? 'vehicle' : 'vehicles'}</span>
           <label>Sort
             <select value={sort} onChange={(e) => setSort(e.target.value)}>
               <option value="featured">Featured</option>
