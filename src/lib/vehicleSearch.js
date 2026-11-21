@@ -1,9 +1,9 @@
 // Local, deterministic query interpretation. No API calls or external model dependency.
 const aliases={
- make:{Toyota:['toyota','toyata'],Chevrolet:['chevrolet','chevy','daewoo'],'Mercedes-Benz':['mercedes benz','mercedes','benz'],BMW:['bmw'],'Land Rover':['land rover','range rover'],Porsche:['porsche'],Dongfeng:['dongfeng'],BYD:['byd'],XPeng:['xpeng','xpeng'],Kia:['kia'],Hyundai:['hyundai'],Honda:['honda'],Nissan:['nissan'],Volkswagen:['volkswagen','vw'],Ford:['ford']},
- model:{'Corolla':['corolla','corola'],'Vitz':['vitz','yaris'],'Matiz':['matiz'],'Prado':['prado'],'Land Cruiser':['land cruiser'],'Camry':['camry'],'GLE':['gle'],'530i':['530i'],'Range Rover Sport':['range rover sport'],'911':['911','carrera'],'Nammi':['nammi'],'Atto':['atto','yuan up','yuanup'],'G9':['g9'],'Picanto':['picanto'],'Elantra':['elantra'],'Civic':['civic'],'Sentra':['sentra']},
- type:{SUV:['suv','sport utility','family suv','crossover'],Sedan:['sedan','saloon'],Hatchback:['hatchback','hatch back'],Truck:['truck','lorry','pickup','pick up','pick-up','business pickup'],Equipment:['excavator','equipment','machinery']},
- fuel:{Diesel:['diesel'],Petrol:['petrol','gasoline'],Electric:['electric','ev'],Hybrid:['hybrid']},
+ make:{Dongfeng:['dongfeng'],BYD:['byd'],XPeng:['xpeng'],Volkswagen:['volkswagen','vw'],'Mercedes-Benz':['mercedes benz','mercedes','benz'],BMW:['bmw'],Toyota:['toyota']},
+ model:{'Nammi':['nammi','nammi 01'],'Atto 2':['atto 2','atto2','yuan up','yuanup'],'Atto 3':['atto 3','atto3'],'Sealion':['sealion','sealion 7'],'Dolphin':['dolphin'],'ID.6':['id.6','id6','id 6'],'G9':['g9','xpeng g9']},
+ type:{SUV:['suv','sport utility','family suv','crossover'],Hatchback:['hatchback','hatch back','city car'],Truck:['truck','lorry','pickup','pick up','pick-up','business pickup'],Equipment:['excavator','equipment','machinery']},
+ fuel:{Electric:['electric','ev'],Hybrid:['hybrid'],Diesel:['diesel'],Petrol:['petrol','gasoline']},
  transmission:{Automatic:['automatic','auto'],Manual:['manual']}
 };
 const normalize=s=>s.toLowerCase().replace(/[’']/g,'').replace(/[^a-z0-9.,₵\s-]/g,' ').replace(/\s+/g,' ').trim();

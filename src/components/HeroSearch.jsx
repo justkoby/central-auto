@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 const suggestions = [
-  { label: 'Corolla under GH₵200k', query: 'Corolla under GH₵200k' },
-  { label: 'Car for Bolt', query: 'car for Bolt' },
-  { label: 'Family SUV', query: 'family SUV' },
-  { label: 'Business pickup', query: 'business pickup' },
+  { label: 'EV under GH₵250k', query: 'EV under GH₵250k' },
+  { label: 'BYD Atto 3', query: 'BYD Atto 3' },
+  { label: 'Family electric SUV', query: 'family SUV' },
+  { label: 'City electric car', query: 'city car' },
 ];
 
 export default function HeroSearch({ onSearch }) {
@@ -17,7 +17,7 @@ export default function HeroSearch({ onSearch }) {
     <section className="finder-band" aria-labelledby="finder-title" data-reveal>
       <div className="finder-intro">
         <h2 id="finder-title">Tell us what you&apos;re looking for.</h2>
-        <p>Have a car or budget in mind? Describe it and we&apos;ll help you explore your options.</p>
+        <p>Have an electric vehicle or budget in mind? Describe it and we&apos;ll help you explore your options.</p>
       </div>
       <div className="finder-body">
         <form className="natural-search" role="search" onSubmit={(e) => { e.preventDefault(); submit(); }}>
@@ -28,7 +28,7 @@ export default function HeroSearch({ onSearch }) {
             onChange={(e) => setValue(e.target.value)}
             required
             maxLength={400}
-            placeholder="e.g. Corolla under GH₵200k"
+            placeholder="e.g. BYD under GH₵300k or electric SUV"
             autoComplete="off"
             enterKeyHint="search"
           />

@@ -106,10 +106,10 @@ export const evQuestions = [
 ];
 
 export const conventionalCategories = [
-  { id: 'everyday', label: 'Everyday cars', copy: 'Corolla, Vitz and compact city cars.', image: '/assets/corolla-studio.png', alt: 'Silver Toyota Corolla in a blue studio', action: { type: 'explore', value: 'Everyday' } },
-  { id: 'suv', label: 'SUVs', copy: 'Room for more, on every road.', image: '/assets/accra-suv.png', alt: 'Silver Toyota SUV in an Accra coastal setting at dusk', action: { type: 'explore', value: 'SUV' } },
-  { id: 'ride', label: 'Ride-hailing', copy: 'Options for Bolt and Uber drivers.', image: '/assets/vitz-studio.png', alt: 'Silver Toyota Vitz hatchback in a blue studio', action: { type: 'explore', value: 'Ride-hailing' } },
-  { id: 'commercial', label: 'Trucks & equipment', copy: 'Light and heavy-duty trucks, machinery.', image: '/assets/service-commercial.png', alt: 'Commercial truck and yellow excavator', action: { type: 'enquire', value: 'Trucks, equipment & machinery' } },
+  { id: 'everyday', label: 'City & everyday EVs', copy: 'Dongfeng Nammi 01, BYD Dolphin and compact city cars.', image: '/assets/featured-ev/cars/dolphin/full.webp', alt: 'BYD Dolphin electric hatchback side profile', action: { type: 'explore', value: 'Everyday' } },
+  { id: 'suv', label: 'Electric SUVs', copy: 'Spacious electric crossovers for family and road trips.', image: '/assets/featured-ev/cars/atto-3/full.webp', alt: 'BYD Atto 3 electric SUV side profile', action: { type: 'explore', value: 'SUV' } },
+  { id: 'ride', label: 'Ride-hailing electrics', copy: 'High-efficiency EVs built for daily driving savings.', image: '/assets/01_nammi_concept.png', alt: 'Dongfeng Nammi 01 electric car side profile', action: { type: 'explore', value: 'Ride-hailing' } },
+  { id: 'commercial', label: 'Trucks & equipment', copy: 'Light and heavy-duty trucks, machinery & fleet.', image: '/assets/service-commercial.png', alt: 'Commercial truck and yellow excavator', action: { type: 'enquire', value: 'Trucks, equipment & machinery' } },
 ];
 
 export const services = [

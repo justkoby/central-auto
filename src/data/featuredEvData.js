@@ -57,7 +57,7 @@ export const featuredVehicles = [
     priceText: 'Price on enquiry',
     priceValue: 450000, // Illustrative baseline for financing calculator
     priceNote: 'Concept design asset · Pricing on request',
-    inventoryId: null,
+    inventoryId: 16,
     isConcept: true,
     conceptNotice: 'Conceptual preview asset. Specifications shown are based on manufacturer overseas data and are for customer enquiry.',
     specs: [
