@@ -1,5 +1,6 @@
-import EvHero from './EvHero';
+import VideoHero from './VideoHero';
 
-export default function Hero({ onEnquire, onDetail }) {
-  return <EvHero onEnquire={onEnquire} onDetail={onDetail} />;
+export default function Hero() {
+  return <VideoHero />;
 }
+

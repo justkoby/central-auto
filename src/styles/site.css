@@ -44,7 +44,17 @@ h3 { font-family: var(--font-sans); font-weight: var(--weight-emphasis); letter-
   z-index: 50;
   height: var(--nav-h);
   transition: background-color var(--dur-base) var(--ease), color var(--dur-base) var(--ease);
-  color: #11141a;
+  color: #ffffff;
+}
+.site-nav:not(.is-solid):not(.is-menu-open) .logo img {
+  filter: brightness(0) invert(1);
+}
+.site-nav:not(.is-solid):not(.is-menu-open) .menu-toggle span {
+  background: #ffffff;
+}
+.site-nav:not(.is-solid):not(.is-menu-open) .nav-contact {
+  background: #ffffff;
+  color: var(--brand);
 }
 .site-nav nav {
   height: 100%;

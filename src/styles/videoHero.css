@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Video Hero Section
+   Cinematic full-bleed background video hero with bottom-aligned Specular CTA
+   ========================================================================== */
+
+.video-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 560px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.video-hero__background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.video-hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+/* Subtle gradient scrim at the bottom to ensure the SpecularButton stands out crisply */
+.video-hero__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.05) 30%,
+    rgba(0, 0, 0, 0.15) 70%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+.video-hero__bottom {
+  position: relative;
+  z-index: 10;
+  padding-bottom: clamp(36px, 6vh, 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .video-hero {
+    height: 92vh;
+    min-height: 500px;
+  }
+
+  .video-hero__bottom {
+    padding-bottom: clamp(28px, 5vh, 48px);
+  }
+}
