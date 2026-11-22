@@ -24,7 +24,7 @@ export default function Inventory({ filters, setFilters, onFilterSearch, searchS
     <section className="section inventory" id="inventory" aria-labelledby="inventory-title">
       <div className="section-head" data-reveal>
         <h2 id="inventory-title">Browse the collection.</h2>
-        <p>From your first car to your next workhorse. Everyday favourites, compact cars and premium finds.</p>
+        <p>Curated battery-electric vehicles available to order or enquire in Ghana.</p>
       </div>
 
       <CarFinder filters={filters} setFilters={setFilters} onSearch={onFilterSearch} />
@@ -84,10 +84,22 @@ export default function Inventory({ filters, setFilters, onFilterSearch, searchS
           <div className="discover-preview">
             <VehiclePicture vehicle={active} className="preview-image" />
             <div className="preview-body">
-              <p className="preview-status">{active.status === 'In Ghana' ? 'Available in Ghana' : 'Available to import'}</p>
+              <p className="preview-status">
+                <span className="status-pill">{active.status}</span>
+                <span className="status-subdetail">100% Battery Electric</span>
+              </p>
               <h3>{active.make} {active.model}</h3>
-              <p className="preview-specs">{active.year} · Automatic · {active.fuel} · {active.km} km</p>
-              <p className="preview-price">{money(active.price)}</p>
+              <div className="preview-specs-chips">
+                <span className="spec-chip">{active.year}</span>
+                <span className="spec-chip">{active.type}</span>
+                {active.range && <span className="spec-chip spec-chip--highlight">{active.range}</span>}
+                {active.battery && <span className="spec-chip">{active.battery}</span>}
+                <span className="spec-chip">{active.km}</span>
+              </div>
+              <div className="preview-price-wrap">
+                <p className="preview-price">{money(active.price)}</p>
+                <span className="preview-price-tag">Indicative Ghana Price</span>
+              </div>
               <div className="actions">
                 <button className="button button-solid" onClick={() => onDetail(active)}>View details</button>
                 <button className="button button-outline" onClick={() => toggleSaved(active.id)} aria-pressed={saved.includes(active.id)}>{saved.includes(active.id) ? 'Saved' : 'Save'}</button>
@@ -97,11 +109,44 @@ export default function Inventory({ filters, setFilters, onFilterSearch, searchS
           <ul className="discover-list">
             {list.map((v) => (
               <li key={v.id} className={v.id === active.id ? 'is-active' : ''}>
-                <button className="row-main" aria-current={v.id === active.id} onMouseEnter={() => setActiveId(v.id)} onFocus={() => setActiveId(v.id)} onClick={() => { setActiveId(v.id); if (matchMedia('(max-width: 899px)').matches) window.scrollTo({ top: document.querySelector('.discover').getBoundingClientRect().top + scrollY - 80, behavior: 'smooth' }); }}>
-                  <span className="row-name"><small>{v.make}</small>{v.model}</span>
+                <button
+                  className="row-main"
+                  aria-current={v.id === active.id}
+                  onMouseEnter={() => setActiveId(v.id)}
+                  onFocus={() => setActiveId(v.id)}
+                  onClick={() => {
+                    setActiveId(v.id);
+                    if (matchMedia('(max-width: 899px)').matches) {
+                      window.scrollTo({
+                        top: document.querySelector('.discover').getBoundingClientRect().top + scrollY - 80,
+                        behavior: 'smooth'
+                      });
+                    }
+                  }}
+                >
+                  <div className="row-thumb-wrap">
+                    <img
+                      src={vehicleImage(v, 240)}
+                      alt={`${v.make} ${v.model}`}
+                      className="row-thumb-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="row-info">
+                    <span className="row-name">
+                      <small>{v.make}</small>
+                      {v.model}
+                    </span>
+                    <span className="row-sub">{v.type} · {v.range || v.fuel}</span>
+                  </div>
                   <span className="row-price">{money(v.price)}</span>
                 </button>
-                <button className={`save ${saved.includes(v.id) ? 'selected' : ''}`} onClick={() => toggleSaved(v.id)} aria-label={`${saved.includes(v.id) ? 'Unsave' : 'Save'} ${v.make} ${v.model}`} aria-pressed={saved.includes(v.id)}>
+                <button
+                  className={`save ${saved.includes(v.id) ? 'selected' : ''}`}
+                  onClick={() => toggleSaved(v.id)}
+                  aria-label={`${saved.includes(v.id) ? 'Unsave' : 'Save'} ${v.make} ${v.model}`}
+                  aria-pressed={saved.includes(v.id)}
+                >
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9-9.4C2.1 8 4 5.5 6.8 5.5c1.9 0 3.3 1 5.2 3 1.9-2 3.3-3 5.2-3 2.8 0 4.7 2.5 3.8 5.6-1.5 4.8-9 9.4-9 9.4Z" /></svg>
                 </button>
               </li>

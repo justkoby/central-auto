@@ -44,7 +44,7 @@ export const featuredVehicles = [
       avgRadiusFraction: 152 / 1921,
     },
     cta1: 'Explore Vehicle',
-    cta2: 'Estimate Payment',
+    cta2: 'Running Costs',
   },
   {
     id: 'sealion-7',
@@ -89,7 +89,7 @@ export const featuredVehicles = [
       avgRadiusFraction: 153 / 1774,
     },
     cta1: 'Explore Vehicle',
-    cta2: 'Estimate Payment',
+    cta2: 'Running Costs',
   },
   {
     id: 'dolphin',
@@ -133,6 +133,6 @@ export const featuredVehicles = [
       avgRadiusFraction: 154.5 / 1882,
     },
     cta1: 'Explore Vehicle',
-    cta2: 'Estimate Payment',
+    cta2: 'Running Costs',
   },
 ];

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const links = [
-  ['#electric', 'Electric'],
-  ['#inventory', 'Vehicles'],
-  ['#services', 'Services'],
+  ['#inventory', 'EV Collection'],
+  ['#how-it-works', 'How It Works'],
+  ['#running-costs', 'Running Costs'],
   ['#source', 'Sourcing'],
 ];
 

@@ -43,14 +43,14 @@ export default function FeaturedEVShowcase({ onEnquire, onDetail, onEstimate }) 
     }
   }, [onDetail, onEnquire]);
 
-  // CTA 2: Estimate Payment
+  // CTA 2: Running Cost Calculation
   const handleEstimate = useCallback((car) => {
     if (onEstimate) {
       onEstimate(car);
     } else {
-      const estimatorEl = document.getElementById('financing-estimator');
-      if (estimatorEl) {
-        estimatorEl.scrollIntoView({ behavior: 'smooth' });
+      const targetEl = document.getElementById('running-costs');
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
       }
     }
   }, [onEstimate]);
@@ -89,8 +89,8 @@ export default function FeaturedEVShowcase({ onEnquire, onDetail, onEstimate }) 
         trigger: section,
         pin: pinWrapper,
         start: 'top top',
-        end: () => `+=${window.innerHeight * 2.2}`,
-        scrub: 0.6,
+        end: () => `+=${window.innerHeight * 1.5}`,
+        scrub: 0.5,
         invalidateOnRefresh: true,
         onRefresh: (self) => {
           const { initialOffset: curOffset, stride: curStride } = getPositions();

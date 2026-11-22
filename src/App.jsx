@@ -3,16 +3,14 @@ import Hero from './components/Hero';
 import Header from './components/Header';
 import HowItWorks from './components/HowItWorks';
 import WhatsAppButton from './components/WhatsAppButton';
-import HeroSearch from './components/HeroSearch';
 import Inventory from './components/Inventory';
 import EnquiryDialog from './components/EnquiryDialog';
-import ElectricFeature from './components/ElectricFeature';
 import ElectricGhana from './components/ElectricGhana';
 import Categories from './components/Categories';
 import FeaturedEVShowcase from './components/FeaturedEVShowcase';
-import GovernmentPaymentEstimator from './components/GovernmentPaymentEstimator';
+import RunningCostComparison from './components/RunningCostComparison';
 import useReveal from './components/useReveal';
-import { vehicles, matchesCollection } from './data/vehicles';
+import { vehicles, publicVehicles, matchesCollection } from './data/vehicles';
 import { interpretVehicleQuery, matchesVehicleQuery } from './lib/vehicleSearch';
 
 const emptyFilters = { make: '', model: '', budget: '', availability: '' };
@@ -35,7 +33,6 @@ export default function App() {
   const [activeQuery, setActiveQuery] = useState('');
   const [view, setView] = useState(null);
   const [toast, setToast] = useState('');
-  const [selectedEstimateVehicle, setSelectedEstimateVehicle] = useState(null);
 
   useReveal();
   useEffect(() => {
@@ -49,7 +46,8 @@ export default function App() {
 
   const searchSummary = useMemo(() => interpretVehicleQuery(activeQuery), [activeQuery]);
   const list = useMemo(() => {
-    const result = vehicles.filter((v) =>
+    const sourceList = publicVehicles || vehicles;
+    const result = sourceList.filter((v) =>
       matchesVehicleQuery(v, searchSummary) &&
       matchesCollection(v, bodyType) &&
       (!savedOnly || saved.includes(v.id)) &&
@@ -75,7 +73,6 @@ export default function App() {
     setSaved((prev) => (prev.includes(id) ? prev.filter((n) => n !== id) : [...prev, id]));
     setToast(saved.includes(id) ? 'Removed from saved cars' : 'Added to your saved cars');
   }
-  function search(text) { reset(); setActiveQuery(text); scrollToInventory(); }
   const enquire = (service) => setView({ kind: 'enquiry', service });
 
   return (
@@ -83,18 +80,20 @@ export default function App() {
       <a className="skip-link" href="#main">Skip to content</a>
       <Header savedCount={saved.length} savedOnly={savedOnly} onSaved={() => { setSavedOnly(true); scrollToInventory(); }} onContact={() => enquire('General enquiries')} />
       <main id="main">
+        {/* 1. Cinematic hero video with SpecularButton CTA */}
         <Hero onEnquire={enquire} onDetail={(vehicle) => setView({ kind: 'vehicle', vehicle })} />
+
+        {/* 2. Interactive EV showcase rail */}
         <FeaturedEVShowcase
           onEnquire={enquire}
           onDetail={(vehicle) => setView({ kind: 'vehicle', vehicle })}
-          onEstimate={(car) => {
-            setSelectedEstimateVehicle(car);
-            const el = document.getElementById('financing-estimator');
+          onEstimate={() => {
+            const el = document.getElementById('running-costs');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
         />
-        <HeroSearch onSearch={search} />
-        <Categories onExplore={explore} onEnquire={enquire} />
+
+        {/* 3. Browse the Collection */}
         <Inventory
           filters={filters}
           setFilters={setFilters}
@@ -114,14 +113,18 @@ export default function App() {
           onDetail={(vehicle) => setView({ kind: 'vehicle', vehicle })}
           onReset={reset}
         />
-        <GovernmentPaymentEstimator
-          selectedVehicle={selectedEstimateVehicle}
-          onEnquire={enquire}
-        />
-        <ElectricFeature onEnquire={enquire} />
+
+        {/* 4. How It Works (Going electric, made simple) */}
         <HowItWorks />
+
+        {/* 5. Charging & Running-Cost Calculator */}
+        <RunningCostComparison onEnquire={enquire} />
+
+        {/* 6. Vehicle Segments & EV Education */}
+        <Categories onExplore={explore} onEnquire={enquire} />
         <ElectricGhana onEnquire={enquire} />
 
+        {/* 7. Final vehicle sourcing enquiry CTA */}
         <section className="source" id="source" aria-labelledby="source-title">
           <h2 id="source-title">Not on the site? Tell us.</h2>
           <div className="source-actions" data-reveal>
@@ -143,21 +146,23 @@ export default function App() {
                 <img src="/logo.svg" alt="Central Auto Ltd" width="1035" height="426" decoding="async" loading="lazy" />
               </a>
               <p className="footer-tagline">
-                Premium electric vehicles, certified imports, and trusted automotive solutions for Ghana.
+                Premium electric vehicles, verified sourcing, and advisory for Ghana.
               </p>
             </div>
 
             <div className="footer-cols">
-              <nav aria-label="Explore">
+              <nav aria-label="Explore" className="footer-nav-col">
                 <h2>Explore</h2>
-                <a href="#featured-ev">Featured EVs</a>
-                <a href="#financing-estimator">Payment Estimator</a>
-                <a href="#inventory">EV Catalog</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#ev-ghana">Going Electric</a>
-                <a href="#source">Vehicle Sourcing</a>
+                <div className="footer-nav-grid">
+                  <a href="#featured-ev">Featured EVs</a>
+                  <a href="#inventory">EV Catalog</a>
+                  <a href="#how-it-works">How It Works</a>
+                  <a href="#running-costs">Running Costs</a>
+                  <a href="#ev-ghana">Going Electric</a>
+                  <a href="#source">Sourcing</a>
+                </div>
               </nav>
-              <div>
+              <div className="footer-contact-col">
                 <h2>Central Auto Ltd</h2>
                 <p>Accra, Ghana</p>
                 <p>Showroom & Service Facility</p>
@@ -172,7 +177,7 @@ export default function App() {
           </div>
 
           <div className="footer-bottom">
-            <p className="footer-legal">© {new Date().getFullYear()} Central Auto Ltd. All rights reserved. Prices and specifications illustrative.</p>
+            <p className="footer-legal">© {new Date().getFullYear()} Central Auto Ltd. All rights reserved. Pricing and specifications illustrative.</p>
           </div>
         </div>
       </footer>

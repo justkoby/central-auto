@@ -63,7 +63,7 @@
 
   /* layout and motion */
   --gutter: clamp(20px, 4vw, 56px);
-  --section-gap: clamp(88px, 12vw, 200px);
+  --section-gap: clamp(32px, 5vw, 60px);
   --nav-h: 72px;
   --radius-button: 999px;
   --radius-input: 12px;

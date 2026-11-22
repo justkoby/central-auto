@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 const suggestions = [
-  { label: 'EV under GH₵250k', query: 'EV under GH₵250k' },
-  { label: 'BYD Atto 3', query: 'BYD Atto 3' },
+  { label: 'BYD under GH₵300,000', query: 'BYD under 300k' },
   { label: 'Family electric SUV', query: 'family SUV' },
-  { label: 'City electric car', query: 'city car' },
+  { label: 'Affordable city electric car', query: 'city car' },
+  { label: 'Electric vehicle for ride-hailing', query: 'ride hailing' },
 ];
 
 export default function HeroSearch({ onSearch }) {
@@ -17,7 +17,7 @@ export default function HeroSearch({ onSearch }) {
     <section className="finder-band" aria-labelledby="finder-title" data-reveal>
       <div className="finder-intro">
         <h2 id="finder-title">Tell us what you&apos;re looking for.</h2>
-        <p>Have an electric vehicle or budget in mind? Describe it and we&apos;ll help you explore your options.</p>
+        <p>Describe the electric model, body style, or budget you have in mind.</p>
       </div>
       <div className="finder-body">
         <form className="natural-search" role="search" onSubmit={(e) => { e.preventDefault(); submit(); }}>

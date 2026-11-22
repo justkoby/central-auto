@@ -168,15 +168,16 @@ export default function GovernmentPaymentEstimator({ selectedVehicle, onEnquire 
   const handleWhatsAppEnquiry = () => {
     const vehicleName = vehicleId === 'custom' ? 'a vehicle' : activeVehicle.name;
     const message = [
-      `Hello Central Auto Ltd,`,
-      `I'm a government worker interested in possible monthly payment arrangements for the ${vehicleName}.`,
-      `I used the website's illustrative calculator with the following estimate:`,
-      `• Estimated Monthly Repayment: ${formatCedis(calculation.monthly)} / month`,
-      `• Repayment Period: ${periodMonths} months`,
+      `*Central Auto Ltd — Payment Planning Enquiry*`,
+      `Hello, I would like to explore vehicle payment options based on my estimate:`,
+      `• Selected Vehicle: ${vehicleName}`,
       `• Indicative Vehicle Price: ${formatCedis(calculation.price)}`,
-      `• Illustrative Down Payment: ${formatCedis(calculation.downAmount)} (${downPercent}%)`,
+      `• Down Payment: ${formatCedis(calculation.downAmount)} (${downPercent}%)`,
       `• Financed Amount: ${formatCedis(calculation.principal)}`,
-      `I understand this is an illustrative estimate and would like to discuss whether any payment options may be available for government employees.`,
+      `• Repayment Period: ${periodMonths} months`,
+      `• Illustrative Interest Rate: ${interestRate}% p.a.`,
+      `• Estimated Monthly Repayment: ${formatCedis(calculation.monthly)}/month`,
+      `*Notice:* I understand this calculation is an illustrative estimate and not a formal financing offer. Please let me know what options may be available.`,
     ].join('\n\n');
 
     if (business.whatsappNumber) {

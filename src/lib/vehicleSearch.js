@@ -2,8 +2,8 @@
 const aliases = {
     make: { Dongfeng: ['dongfeng'], BYD: ['byd'], XPeng: ['xpeng'], Volkswagen: ['volkswagen', 'vw'], 'Mercedes-Benz': ['mercedes benz', 'mercedes', 'benz'], BMW: ['bmw'], Toyota: ['toyota'] },
     model: { 'Nammi': ['nammi', 'nammi 01'], 'Atto 2': ['atto 2', 'atto2', 'yuan up', 'yuanup'], 'Atto 3': ['atto 3', 'atto3'], 'Sealion': ['sealion', 'sealion 7'], 'Dolphin': ['dolphin'], 'ID.6': ['id.6', 'id6', 'id 6'], 'G9': ['g9', 'xpeng g9'] },
-    type: { SUV: ['suv', 'sport utility', 'family suv', 'crossover'], Hatchback: ['hatchback', 'hatch back', 'city car'], Truck: ['truck', 'lorry', 'pickup', 'pick up', 'pick-up', 'business pickup'], Equipment: ['excavator', 'equipment', 'machinery'] },
-    fuel: { Electric: ['electric', 'ev'], Hybrid: ['hybrid'], Diesel: ['diesel'], Petrol: ['petrol', 'gasoline'] },
+    type: { SUV: ['suv', 'sport utility', 'family suv', 'crossover'], Hatchback: ['hatchback', 'hatch back', 'city car'] },
+    fuel: { Electric: ['electric', 'ev'] },
     transmission: { Automatic: ['automatic', 'auto'], Manual: ['manual'] }
 };
 const normalize = s => s.toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9.,₵\s-]/g, ' ').replace(/\s+/g, ' ').trim();

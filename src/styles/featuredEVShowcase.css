@@ -13,6 +13,7 @@
   color: #11161d;
   scroll-margin-top: var(--nav-h, 72px);
   overflow: clip;
+  margin-bottom: 0;
 }
 
 /* Pinned Wrapper on Desktop */

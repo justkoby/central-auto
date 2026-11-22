@@ -33,3 +33,15 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .openai/*.log
+
+# Scratch and backup files
+central_auto_ev_showcase_assets/
+new-branch/
+scripts/
+*.backup.js
+public/*.avif
+public/Graphite*
+public/Metallic*
+public/Modern*
+
+
