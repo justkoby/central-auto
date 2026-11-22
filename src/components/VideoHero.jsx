@@ -54,7 +54,6 @@ export default function VideoHero({ onEnquire }) {
 
       <div className="video-hero__content-wrap">
         <div className="video-hero__content" data-reveal>
-          <span className="video-hero__pill">100% Electric Dealership · Ghana</span>
           <h1 className="video-hero__title">
             Your next drive starts electric.
           </h1>
