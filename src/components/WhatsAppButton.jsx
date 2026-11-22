@@ -10,21 +10,9 @@ const icon = (
 
 export default function WhatsAppButton({ onEnquire }) {
   const [open, setOpen] = useState(false);
-  const [heroClearance, setHeroClearance] = useState(true);
-
-  useEffect(() => {
-    const hero = document.querySelector('.ev-hero-showcase, .polestar-hero');
-    if (!hero || typeof IntersectionObserver === 'undefined') return undefined;
-    const io = new IntersectionObserver(
-      ([entry]) => setHeroClearance(entry.isIntersecting && entry.intersectionRatio > 0.12),
-      { threshold: [0, 0.12, 0.35, 0.6] }
-    );
-    io.observe(hero);
-    return () => io.disconnect();
-  }, []);
 
   return (
-    <div className={`whatsapp-widget${heroClearance ? ' is-hero-clearance' : ''}`}>
+    <div className="whatsapp-widget">
       {open && (
         <aside className="whatsapp-panel" id="whatsapp-panel" aria-label="WhatsApp contact">
           <button className="whatsapp-close" aria-label="Close WhatsApp information" onClick={() => setOpen(false)}>×</button>

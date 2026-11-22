@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Hero from './components/Hero';
 import Header from './components/Header';
-import Services from './components/Services';
+import HowItWorks from './components/HowItWorks';
 import WhatsAppButton from './components/WhatsAppButton';
 import HeroSearch from './components/HeroSearch';
 import Inventory from './components/Inventory';
@@ -18,12 +18,6 @@ import { interpretVehicleQuery, matchesVehicleQuery } from './lib/vehicleSearch'
 const emptyFilters = { make: '', model: '', budget: '', availability: '' };
 const scrollToInventory = () =>
   document.getElementById('inventory')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-
-const steps = [
-  ['Find what feels right.', 'Explore by body style, budget or brand. Save your favourites and take a closer look at the details.'],
-  ['Let’s talk about it.', 'Ask about a vehicle, request a viewing or share the specifications of a car you want us to source.'],
-  ['Know your next step.', 'Discuss availability, vehicle information and delivery arrangements with the team before proceeding.'],
-];
 
 export default function App() {
   const [filters, setFilters] = useState(emptyFilters);
@@ -100,7 +94,6 @@ export default function App() {
           }}
         />
         <HeroSearch onSearch={search} />
-        <ElectricGhana onEnquire={enquire} />
         <Categories onExplore={explore} onEnquire={enquire} />
         <Inventory
           filters={filters}
@@ -126,7 +119,8 @@ export default function App() {
           onEnquire={enquire}
         />
         <ElectricFeature onEnquire={enquire} />
-        <Services onEnquire={enquire} />
+        <HowItWorks />
+        <ElectricGhana onEnquire={enquire} />
 
         <section className="source" id="source" aria-labelledby="source-title">
           <h2 id="source-title">Not on the site? Tell us.</h2>
@@ -139,44 +133,48 @@ export default function App() {
             </div>
           </div>
         </section>
-
-        <section className="section approach" id="approach" aria-labelledby="approach-title">
-          <h2 id="approach-title">From first look to next move.</h2>
-          <ol className="steps">
-            {steps.map(([title, copy]) => (
-              <li key={title} data-reveal><h3>{title}</h3><p>{copy}</p></li>
-            ))}
-          </ol>
-        </section>
       </main>
 
       <footer>
-        <div className="footer-top">
-          <div className="footer-cols">
-            <nav aria-label="Explore">
-              <h2>Explore</h2>
-              <a href="#featured-ev">Featured EVs (Rivian rail)</a>
-              <a href="#financing-estimator">Payment estimator</a>
-              <a href="#electric">Electric vehicles</a>
-              <a href="#inventory">Our collection</a>
-              <a href="#source">Vehicle sourcing</a>
-              <a href="#services">After-sales & spare parts</a>
-              <a href="#services">Equipment & manufacturing</a>
-              <a href="#approach">Our approach</a>
-            </nav>
-            <div>
-              <h2>Central Auto Ltd</h2>
-              <p>Ghana</p>
-              <p>Showroom details coming soon</p>
-              <p>Contact details to be confirmed</p>
+        <div className="footer-container">
+          <div className="footer-top">
+            <div className="footer-brand-col">
+              <a className="footer-logo" href="#" aria-label="Central Auto Ltd, back to top">
+                <img src="/logo.svg" alt="Central Auto Ltd" width="1035" height="426" decoding="async" loading="lazy" />
+              </a>
+              <p className="footer-tagline">
+                Premium electric vehicles, certified imports, and trusted automotive solutions for Ghana.
+              </p>
+            </div>
+
+            <div className="footer-cols">
+              <nav aria-label="Explore">
+                <h2>Explore</h2>
+                <a href="#featured-ev">Featured EVs</a>
+                <a href="#financing-estimator">Payment Estimator</a>
+                <a href="#inventory">EV Catalog</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#ev-ghana">Going Electric</a>
+                <a href="#source">Vehicle Sourcing</a>
+              </nav>
+              <div>
+                <h2>Central Auto Ltd</h2>
+                <p>Accra, Ghana</p>
+                <p>Showroom & Service Facility</p>
+                <p>Mon – Sat: 8:00am – 6:00pm</p>
+              </div>
+            </div>
+
+            <div className="footer-cta-col">
+              <h2>Get in Touch</h2>
+              <button className="button button-on-brand" onClick={() => enquire('General enquiries')}>Start a conversation</button>
             </div>
           </div>
-          <button className="button button-on-brand" onClick={() => enquire('General enquiries')}>Start a conversation</button>
+
+          <div className="footer-bottom">
+            <p className="footer-legal">© {new Date().getFullYear()} Central Auto Ltd. All rights reserved. Prices and specifications illustrative.</p>
+          </div>
         </div>
-        <a className="footer-logo" href="#" aria-label="Central Auto Ltd, back to top">
-          <img src="/logo.svg" alt="" width="1035" height="426" decoding="async" loading="lazy" />
-        </a>
-        <p className="footer-legal">© {new Date().getFullYear()} Central Auto Ltd. Design concept. Demo vehicles, images and prices.</p>
       </footer>
 
       <WhatsAppButton onEnquire={() => enquire('General enquiries')} />

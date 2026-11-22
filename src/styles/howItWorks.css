@@ -1,0 +1,147 @@
+/* ==========================================================================
+   How It Works Section
+   Black premium card style with green badge accents and connected track
+   ========================================================================== */
+
+.how-it-works {
+  background: #000000;
+  color: #ffffff;
+  padding: clamp(64px, 10vh, 120px) var(--gutter);
+  position: relative;
+  overflow: hidden;
+}
+
+.how-it-works__container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.how-it-works__title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.25rem, 1.8rem + 2vw, 3.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: clamp(48px, 8vh, 80px);
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+.how-it-works__track {
+  position: relative;
+  width: 100%;
+}
+
+/* Connecting green accent line between step circles */
+.how-it-works__line {
+  position: absolute;
+  top: 32px;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: rgba(37, 211, 102, 0.4);
+  z-index: 1;
+}
+
+.how-it-works__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  position: relative;
+  z-index: 2;
+}
+
+.how-it-works__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.how-it-works__badge-wrap {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.how-it-works__icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgba(37, 211, 102, 0.8);
+  background: #000000;
+  color: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 24px -4px rgba(37, 211, 102, 0.35);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.how-it-works__step:hover .how-it-works__icon-circle {
+  transform: translateY(-4px);
+  border-color: #25d366;
+  box-shadow: 0 0 32px 0 rgba(37, 211, 102, 0.55);
+}
+
+.how-it-works__icon-circle svg {
+  width: 26px;
+  height: 26px;
+}
+
+.how-it-works__num-badge {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #25d366;
+  color: #000000;
+  font-size: 0.68rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  border: 2px solid #000000;
+}
+
+.how-it-works__step-title {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 1rem + 0.3vw, 1.35rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+}
+
+.how-it-works__step-desc {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+  max-width: 26ch;
+  margin: 0 auto;
+}
+
+@media (max-width: 899px) {
+  .how-it-works__line {
+    display: none;
+  }
+
+  .how-it-works__steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .how-it-works__steps {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .how-it-works__title {
+    text-align: center;
+  }
+}
