@@ -480,18 +480,28 @@
    Mobile & Responsive Adaptations (<= 768px)
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
+  .rivian-showcase-section {
+    overflow-x: clip;
+    width: 100%;
+    max-width: 100%;
+  }
+
   .rivian-pin-wrapper {
     height: auto;
     min-height: auto;
     max-height: none;
     padding: calc(var(--nav-h, 60px) + 12px) 16px 32px;
     gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .rivian-top-bar {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: space-between;
+    width: 100%;
   }
 
   .rivian-brand-indicator {
@@ -516,61 +526,63 @@
   }
 
   .rivian-arrow-btn {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
   }
 
   .rivian-arrow-btn svg {
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
   }
 
   .rivian-car-watermark {
-    font-size: clamp(3.4rem, 18vw, 6.5rem);
-    top: 48%;
+    font-size: clamp(3rem, 14vw, 5.5rem);
+    top: 50%;
   }
 
   .rivian-stage-viewport {
     min-height: 200px;
-    width: 100vw;
-    margin-left: -16px;
-    margin-right: -16px;
-    overflow-x: hidden;
-  }
-
-  .rivian-mobile-track {
-    display: flex;
     width: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .rivian-mobile-track::-webkit-scrollbar {
-    display: none;
-  }
-
-  .rivian-mobile-slot {
-    flex: 0 0 100vw;
-    width: 100vw;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 16px;
+    max-width: 100%;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
     box-sizing: border-box;
   }
 
-  .rivian-car-stage {
-    width: 90vw;
+  .rivian-mobile-stage {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+    box-sizing: border-box;
+    touch-action: pan-y;
+  }
+
+  .rivian-car-stage--mobile {
+    width: 100%;
+    max-width: min(100%, 520px);
     height: auto;
+    animation: rivianFadeIn 0.35s ease;
+  }
+
+  @keyframes rivianFadeIn {
+    from {
+      opacity: 0.7;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   .rivian-specs-pricing-row {
     flex-direction: column;
     gap: 14px;
+    width: 100%;
   }
 
   .rivian-price-col {
@@ -585,6 +597,8 @@
 
   .rivian-specs-grid {
     gap: 18px;
+    width: 100%;
+    justify-content: space-around;
   }
 
   .rivian-cta-row {
@@ -602,6 +616,7 @@
   .rivian-dots-indicator {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 8px;
   }
 }
 

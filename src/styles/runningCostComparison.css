@@ -18,7 +18,7 @@
 }
 
 .cost-container {
-  max-width: 1040px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -457,5 +457,7 @@
   .cost-action-btn {
     width: 100%;
     min-height: 44px;
+    white-space: normal;
+    text-align: center;
   }
 }

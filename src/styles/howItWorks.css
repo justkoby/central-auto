@@ -1,38 +1,43 @@
 /* ==========================================================================
    How It Works Section
-   Inspired by DriveEV GH: clean pitch black (#000000) background,
-   horizontal connected progression with glowing neon-green icons.
+   Dark forest-green identity with compact vertical progression on mobile
    ========================================================================== */
 
 .how-it-works {
-  background-color: #000000;
+  background-color: var(--brand, #003428);
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(20, 96, 72, 0.4) 0%, transparent 75%),
+    linear-gradient(180deg, #002b21 0%, #003428 50%, #002e23 100%);
   color: #ffffff;
   padding: clamp(48px, 7vh, 80px) var(--gutter);
   position: relative;
   overflow: hidden;
   margin: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 
 .how-it-works__container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 .how-it-works__header {
-  text-align: left;
-  max-width: 1200px;
+  text-align: center;
+  max-width: 760px;
   margin: 0 auto clamp(32px, 5vh, 52px);
 }
 
 .how-it-works__title {
   font-family: var(--font-sans);
-  font-size: clamp(2rem, 1.6rem + 1.8vw, 3.25rem);
+  font-size: clamp(2rem, 1.6rem + 2vw, 3.4rem);
   font-weight: 700;
   color: #ffffff;
   margin: 0;
   letter-spacing: -0.03em;
-  line-height: 1.12;
+  line-height: 1.15;
 }
 
 .how-it-works__track {
@@ -40,21 +45,21 @@
   width: 100%;
 }
 
-/* Connecting green line running through circle centers on desktop */
+/* Connecting line on desktop */
 .how-it-works__line {
   position: absolute;
-  top: 32px;
-  left: 10%;
-  right: 10%;
+  top: 28px;
+  left: 12%;
+  right: 12%;
   height: 2px;
-  background: rgba(37, 211, 102, 0.35);
+  background: linear-gradient(90deg, rgba(37, 211, 102, 0.15) 0%, rgba(37, 211, 102, 0.6) 50%, rgba(37, 211, 102, 0.15) 100%);
   z-index: 1;
 }
 
 .how-it-works__steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(20px, 3vw, 40px);
+  gap: clamp(16px, 2.5vw, 36px);
   position: relative;
   z-index: 2;
 }
@@ -64,99 +69,97 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: transparent;
-  padding: 0;
-  transition: transform 0.25s ease;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px 18px 22px;
+  transition: transform 0.2s ease, background 0.2s ease;
+  position: relative;
 }
 
 .how-it-works__step:hover {
   transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(37, 211, 102, 0.35);
 }
 
-.how-it-works__badge-wrap {
-  position: relative;
-  margin-bottom: 20px;
-  display: inline-flex;
-  justify-content: center;
+.how-it-works__marker {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
-.how-it-works__icon-circle {
-  width: 64px;
-  height: 64px;
+.how-it-works__num {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #25d366;
+  letter-spacing: 0.06em;
+  background: rgba(37, 211, 102, 0.12);
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.how-it-works__icon {
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  border: 1.5px solid #25d366;
-  background: #000000;
+  border: 1.5px solid rgba(37, 211, 102, 0.5);
+  background: #00221a;
   color: #25d366;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 24px -2px rgba(37, 211, 102, 0.3);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 0 20px -2px rgba(37, 211, 102, 0.25);
 }
 
-.how-it-works__step:hover .how-it-works__icon-circle {
-  box-shadow: 0 0 32px 0 rgba(37, 211, 102, 0.55);
-  border-color: #2ee670;
+.how-it-works__icon svg {
+  width: 24px;
+  height: 24px;
 }
 
-.how-it-works__icon-circle svg {
-  width: 28px;
-  height: 28px;
-}
-
-/* Round green badge with step number overlapping the bottom of the circle */
-.how-it-works__num-badge {
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #25d366;
-  color: #000000;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-}
-
-.how-it-works__step-content {
+.how-it-works__content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  align-items: center;
-  max-width: 240px;
+  gap: 6px;
 }
 
 .how-it-works__step-title {
   font-family: var(--font-sans);
-  font-size: clamp(1.05rem, 0.95rem + 0.3vw, 1.25rem);
+  font-size: clamp(1.1rem, 1rem + 0.3vw, 1.3rem);
   font-weight: 700;
   color: #ffffff;
   margin: 0;
   letter-spacing: -0.015em;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 .how-it-works__step-desc {
   font-family: var(--font-sans);
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.72);
   margin: 0;
   line-height: 1.5;
-  font-weight: 400;
 }
 
-/* Responsive adjustments */
-@media (max-width: 900px) {
+.how-it-works__mobile-separator {
+  display: none;
+}
+
+/* ==========================================================================
+   Mobile Progression (Vertical Sequence with Clean Typography)
+   ========================================================================== */
+@media (max-width: 768px) {
   .how-it-works {
-    padding: clamp(36px, 5vh, 60px) var(--gutter);
+    padding: clamp(36px, 6vh, 56px) var(--gutter);
+  }
+
+  .how-it-works__header {
+    text-align: left;
+    margin-bottom: 24px;
   }
 
   .how-it-works__line {
@@ -164,66 +167,76 @@
   }
 
   .how-it-works__steps {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px 16px;
-  }
-
-  .how-it-works__step-content {
-    max-width: 100%;
-  }
-
-  .how-it-works__header {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-}
-
-@media (max-width: 480px) {
-  .how-it-works__steps {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
   .how-it-works__step {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 16px 0;
     gap: 16px;
   }
 
-  .how-it-works__badge-wrap {
+  .how-it-works__step:hover {
+    transform: none;
+    background: transparent;
+  }
+
+  .how-it-works__marker {
     margin-bottom: 0;
     flex-shrink: 0;
+    align-items: center;
+    gap: 0;
   }
 
-  .how-it-works__icon-circle {
-    width: 52px;
-    height: 52px;
+  .how-it-works__num {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #25d366;
+    background: rgba(37, 211, 102, 0.15);
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
   }
 
-  .how-it-works__icon-circle svg {
-    width: 22px;
-    height: 22px;
+  .how-it-works__icon {
+    display: none; /* Minimal iconography on mobile to avoid card clutter */
   }
 
-  .how-it-works__num-badge {
-    bottom: -4px;
-    width: 18px;
-    height: 18px;
-    font-size: 0.68rem;
-  }
-
-  .how-it-works__step-content {
-    align-items: flex-start;
+  .how-it-works__content {
+    flex: 1;
     gap: 4px;
   }
 
   .how-it-works__step-title {
-    font-size: 1rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
   }
 
   .how-it-works__step-desc {
-    font-size: 0.82rem;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.45;
+  }
+
+  .how-it-works__mobile-separator {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 54px;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
   }
 }

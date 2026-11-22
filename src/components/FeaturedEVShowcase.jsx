@@ -12,11 +12,11 @@ export default function FeaturedEVShowcase({ onEnquire, onDetail, onEstimate }) 
   const pinWrapperRef = useRef(null);
   const trackRef = useRef(null);
   const wheelRefs = useRef({});
-  const mobileTrackRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const activeIndexRef = useRef(0);
   const [isMobile, setIsMobile] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const touchStartX = useRef(0);
 
   // Viewport detection and reduced-motion listener
   useEffect(() => {
@@ -115,9 +115,7 @@ export default function FeaturedEVShowcase({ onEnquire, onDetail, onEstimate }) 
             setActiveIndex(newIndex);
           }
 
-          // Rotate wheels based on absolute horizontal travel distance:
-          // rotationDeg = -(distanceMovedPx / wheelRadiusPx) * (180 / Math.PI)
-          // Facing left + moving left = negative distance -> counter-clockwise roll
+          // Rotate wheels based on absolute horizontal travel distance
           featuredVehicles.forEach((car) => {
             const radiusPx = curSlotWidth * car.wheels.avgRadiusFraction;
             const currentDeg = -(progress * totalShift / radiusPx) * (180 / Math.PI);
@@ -128,7 +126,7 @@ export default function FeaturedEVShowcase({ onEnquire, onDetail, onEstimate }) 
             if (rearEl) gsap.set(rearEl, { rotate: currentDeg });
           });
 
-          // Secondary subtle body micro-translation (1px) during motion
+          // Secondary subtle body micro-translation during motion
           const microBob = Math.sin(progress * Math.PI * 8) * 1.0;
           const bodyWrappers = track.querySelectorAll('.rivian-car-body');
           gsap.set(bodyWrappers, { y: microBob });
@@ -145,22 +143,15 @@ export default function FeaturedEVShowcase({ onEnquire, onDetail, onEstimate }) 
     };
   }, [isMobile, reducedMotion]);
 
-  // Navigate directly to index (via arrow buttons or pill indicators)
+  // Navigate directly to index (via arrow buttons, dot pills, or mobile swipe)
   const navigateTo = (index) => {
     if (index < 0 || index >= featuredVehicles.length) return;
     activeIndexRef.current = index;
     setActiveIndex(index);
 
-    if (isMobile && mobileTrackRef.current) {
-      const slotWidth = mobileTrackRef.current.clientWidth;
-      mobileTrackRef.current.scrollTo({
-        left: index * slotWidth,
-        behavior: 'smooth',
-      });
-      return;
-    }
+    if (isMobile) return;
 
-    // On desktop, scroll the window to the exact ScrollTrigger progress position
+    // On desktop, scroll window to ScrollTrigger position
     const st = ScrollTrigger.getAll().find((t) => t.vars.trigger === sectionRef.current);
     if (st) {
       const targetProgress = index / (featuredVehicles.length - 1);
@@ -185,27 +176,21 @@ export default function FeaturedEVShowcase({ onEnquire, onDetail, onEstimate }) 
     }
   };
 
-  // Mobile horizontal swipe onScroll handler for wheel rotation and active index
-  const handleMobileScroll = (e) => {
-    const el = e.currentTarget;
-    const scrollLeft = el.scrollLeft;
-    const slotWidth = el.clientWidth || window.innerWidth;
-    const newIdx = Math.round(scrollLeft / slotWidth);
-    if (newIdx !== activeIndexRef.current && newIdx >= 0 && newIdx < featuredVehicles.length) {
-      activeIndexRef.current = newIdx;
-      setActiveIndex(newIdx);
-    }
+  // Mobile Touch Swipe Handling
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
 
-    // Rotate wheels dynamically on mobile swipe
-    featuredVehicles.forEach((car) => {
-      const displayedWidth = slotWidth * 0.88;
-      const radiusPx = displayedWidth * car.wheels.avgRadiusFraction;
-      const deg = -(scrollLeft / radiusPx) * (180 / Math.PI);
-      const frontEl = wheelRefs.current[`${car.id}-front`];
-      const rearEl = wheelRefs.current[`${car.id}-rear`];
-      if (frontEl) frontEl.style.transform = `rotate(${deg}deg)`;
-      if (rearEl) rearEl.style.transform = `rotate(${deg}deg)`;
-    });
+  const handleTouchEnd = (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0 && activeIndex < featuredVehicles.length - 1) {
+        navigateTo(activeIndex + 1);
+      } else if (diff < 0 && activeIndex > 0) {
+        navigateTo(activeIndex - 1);
+      }
+    }
   };
 
   const activeCar = featuredVehicles[activeIndex] || featuredVehicles[0];
@@ -261,64 +246,56 @@ export default function FeaturedEVShowcase({ onEnquire, onDetail, onEstimate }) 
         {/* Central Vehicle Runway Stage */}
         <div className="rivian-stage-viewport">
           {isMobile ? (
-            /* Mobile Swipeable Track */
+            /* Mobile Single Active Vehicle Stage with Smooth Swiping */
             <div
-              ref={mobileTrackRef}
-              className="rivian-mobile-track"
-              onScroll={handleMobileScroll}
+              className="rivian-mobile-stage"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
             >
-              {featuredVehicles.map((car) => (
-                <div key={car.id} className="rivian-mobile-slot">
-                  <div className="rivian-car-stage" style={{ aspectRatio: car.aspectRatio }}>
-                    {/* Architectural Model Lettering directly behind vehicle */}
-                    <div className="rivian-car-watermark" aria-hidden="true">
-                      {car.watermark}
-                    </div>
-
-                    <div className="rivian-ground-shadow" />
-                    <picture className="rivian-car-body">
-                      <source srcSet={car.bodyImg} type="image/webp" />
-                      <img src={car.bodyPng} alt={car.name} loading="eager" decoding="async" />
-                    </picture>
-                    <div
-                      className="rivian-wheel-wrap rivian-wheel-front"
-                      style={{
-                        left: `${car.wheels.front.cx * 100}%`,
-                        top: `${car.wheels.front.cy * 100}%`,
-                        width: `${car.wheels.front.diameter * 100}%`,
-                        height: `${car.wheels.front.diameter * 100 * car.aspectRatio}%`,
-                      }}
-                    >
-                      <picture className="rivian-wheel-pic">
-                        <source srcSet={car.wheelFrontImg} type="image/webp" />
-                        <img
-                          ref={(el) => (wheelRefs.current[`${car.id}-front`] = el)}
-                          src={car.wheelFrontImg.replace('.webp', '.png')}
-                          alt=""
-                        />
-                      </picture>
-                    </div>
-                    <div
-                      className="rivian-wheel-wrap rivian-wheel-rear"
-                      style={{
-                        left: `${car.wheels.rear.cx * 100}%`,
-                        top: `${car.wheels.rear.cy * 100}%`,
-                        width: `${car.wheels.rear.diameter * 100}%`,
-                        height: `${car.wheels.rear.diameter * 100 * car.aspectRatio}%`,
-                      }}
-                    >
-                      <picture className="rivian-wheel-pic">
-                        <source srcSet={car.wheelRearImg} type="image/webp" />
-                        <img
-                          ref={(el) => (wheelRefs.current[`${car.id}-rear`] = el)}
-                          src={car.wheelRearImg.replace('.webp', '.png')}
-                          alt=""
-                        />
-                      </picture>
-                    </div>
-                  </div>
+              <div
+                key={activeCar.id}
+                className="rivian-car-stage rivian-car-stage--mobile"
+                style={{ aspectRatio: activeCar.aspectRatio }}
+              >
+                {/* Model Lettering directly behind vehicle */}
+                <div className="rivian-car-watermark" aria-hidden="true">
+                  {activeCar.watermark}
                 </div>
-              ))}
+
+                <div className="rivian-ground-shadow" />
+                <picture className="rivian-car-body">
+                  <source srcSet={activeCar.bodyImg} type="image/webp" />
+                  <img src={activeCar.bodyPng} alt={activeCar.name} loading="eager" decoding="async" />
+                </picture>
+                <div
+                  className="rivian-wheel-wrap rivian-wheel-front"
+                  style={{
+                    left: `${activeCar.wheels.front.cx * 100}%`,
+                    top: `${activeCar.wheels.front.cy * 100}%`,
+                    width: `${activeCar.wheels.front.diameter * 100}%`,
+                    height: `${activeCar.wheels.front.diameter * 100 * activeCar.aspectRatio}%`,
+                  }}
+                >
+                  <picture className="rivian-wheel-pic">
+                    <source srcSet={activeCar.wheelFrontImg} type="image/webp" />
+                    <img src={activeCar.wheelFrontImg.replace('.webp', '.png')} alt="" />
+                  </picture>
+                </div>
+                <div
+                  className="rivian-wheel-wrap rivian-wheel-rear"
+                  style={{
+                    left: `${activeCar.wheels.rear.cx * 100}%`,
+                    top: `${activeCar.wheels.rear.cy * 100}%`,
+                    width: `${activeCar.wheels.rear.diameter * 100}%`,
+                    height: `${activeCar.wheels.rear.diameter * 100 * activeCar.aspectRatio}%`,
+                  }}
+                >
+                  <picture className="rivian-wheel-pic">
+                    <source srcSet={activeCar.wheelRearImg} type="image/webp" />
+                    <img src={activeCar.wheelRearImg.replace('.webp', '.png')} alt="" />
+                  </picture>
+                </div>
+              </div>
             </div>
           ) : (
             /* Desktop Continuous Track */
@@ -329,7 +306,6 @@ export default function FeaturedEVShowcase({ onEnquire, onDetail, onEstimate }) 
                   className={`rivian-car-slot ${idx === activeIndex ? 'is-active' : ''}`}
                 >
                   <div className="rivian-car-stage" style={{ aspectRatio: car.aspectRatio }}>
-                    {/* Architectural Model Lettering directly behind vehicle */}
                     <div className="rivian-car-watermark" aria-hidden="true">
                       {car.watermark}
                     </div>

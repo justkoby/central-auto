@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import Header from './components/Header';
 import HowItWorks from './components/HowItWorks';
 import WhatsAppButton from './components/WhatsAppButton';
+import BackToTop from './components/BackToTop';
 import Inventory from './components/Inventory';
 import EnquiryDialog from './components/EnquiryDialog';
 import ElectricGhana from './components/ElectricGhana';
@@ -155,18 +156,16 @@ export default function App() {
                 <h2>Explore</h2>
                 <div className="footer-nav-grid">
                   <a href="#featured-ev">Featured EVs</a>
-                  <a href="#inventory">EV Catalog</a>
+                  <a href="#inventory">Browse Collection</a>
                   <a href="#how-it-works">How It Works</a>
                   <a href="#running-costs">Running Costs</a>
-                  <a href="#ev-ghana">Going Electric</a>
-                  <a href="#source">Sourcing</a>
+                  <a href="#source">Vehicle Sourcing</a>
                 </div>
               </nav>
               <div className="footer-contact-col">
                 <h2>Central Auto Ltd</h2>
                 <p>Accra, Ghana</p>
-                <p>Showroom & Service Facility</p>
-                <p>Mon – Sat: 8:00am – 6:00pm</p>
+                <p>EV Advisory & Certified Sourcing</p>
               </div>
             </div>
 
@@ -183,6 +182,7 @@ export default function App() {
       </footer>
 
       <WhatsAppButton onEnquire={() => enquire('General enquiries')} />
+      <BackToTop />
       <EnquiryDialog view={view} onClose={() => setView(null)} />
       {toast && <div className="toast" role="status">{toast}</div>}
     </>
